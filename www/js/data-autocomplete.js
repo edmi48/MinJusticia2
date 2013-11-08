@@ -102,13 +102,18 @@ function carga_informacion(sql,objeto,info)
 function mapa(entidad)
 {
 	if (checkConnection() == 1) {
+		
 		var db;
 		db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
 		sentencia = "update parametro set valor_parametro = '"+entidad+"' where codigo_tparametro = 5";
                db.transaction( function(tx) {
                         tx.executeSql(sentencia, [],
                                 function(tx, result){
-									     window.location = ("mapa.html"); 
+										if (device.platform  == 'iOS') {
+									     window.location = ("mapa_ios.html"); 
+										 }
+										 else
+										 {window.location = ("mapa.html"); }
 										 });
 								   }); 
 	}

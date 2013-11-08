@@ -109,11 +109,9 @@ function mapa(entidad)
                db.transaction( function(tx) {
                         tx.executeSql(sentencia, [],
                                 function(tx, result){
-										if (device.platform  == 'iOS') {
-									     window.location = ("mapa_ios.html"); 
-										 }
-										 else
-										 {window.location = ("mapa.html"); }
+										
+									     window.location = ("mapa.html"); 
+										 
 										 });
 								   }); 
 	}

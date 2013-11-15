@@ -11,7 +11,7 @@ function actualiza_progressbar(por_ini,por_fin)
    .width(por_ini)
    .animate({
    width: por_fin
-   }, 3000);
+   }, 2000);
   });		
 }
 
@@ -60,6 +60,7 @@ function actualiza_informacion(tabla, url)
 							'type':     'error',
 							'title':    'Actualización de Información'
 							});
+						    continua = 0;
 						   }
                 });
 

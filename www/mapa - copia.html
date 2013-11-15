@@ -88,9 +88,9 @@
     // device APIs are available
     //
 function onDeviceReady() {
-	//alert("4");
-	//nom_programa="Centro de Convivencia";
-	//icon_destino="Centro de Convivencia Ciudadana";
+	alert("4");
+	nom_programa="Centro de Convivencia";
+										  icon_destino="Centro de Convivencia Ciudadana";
 	 if (navigator.geolocation)
     {
 		navigator.geolocation.getCurrentPosition(onSuccess, onError, {maximumAge:3000,timeout:30000,enableHighAccuracy:true});
@@ -412,8 +412,8 @@ var Lngdes1 = [];
                         tx.executeSql(sentencia, [],
                                 function(tx, result){
  //alert(result.rows.length);
-                                        for(var i=0; i < result.rows.length; i++)  
-										//for(var i=0; i < 2; i++) 	 
+                                        //for(var i=0; i < result.rows.length; i++)  
+										for(var i=0; i < 2; i++) 	 
 											{
 											
 											 Latdes1[i] = result.rows.item(i)['latitud'];
@@ -426,7 +426,7 @@ var Lngdes1 = [];
 											 //alert("8"+i);
 											 indice=i;
 											 if(i==0) mostrarMapa2();
-											 ingresapunto(i);
+											 ingresapunto();
 											}
                                 });
                 });
@@ -434,19 +434,19 @@ var Lngdes1 = [];
 
         }
 			
-function ingresapunto(var1) {		
+function ingresapunto() {		
 //COLOCA EL ICONO DEL DESTINO
 				if (icon_destino =="Casa de Justicia") {
-					destino[var1] = new google.maps.Marker({
-					position: new google.maps.LatLng(Latdes1[var1], Lngdes1[var1]),
+					destino[indice] = new google.maps.Marker({
+					position: new google.maps.LatLng(Latdes1[indice], Lngdes1[indice]),
 					icon: 'images/cj.png',
 					map: map
 					});
 				}
 				else
 				{
-					destino[var1] = new google.maps.Marker({
-					position: new google.maps.LatLng(Latdes1[var1], Lngdes1[var1]),
+					destino[indice] = new google.maps.Marker({
+					position: new google.maps.LatLng(Latdes1[indice], Lngdes1[indice]),
 					icon: 'images/ccc.png',
 					map: map,
 					title: Nombre_destino+"\n"+Direccion_destino,
@@ -455,18 +455,35 @@ function ingresapunto(var1) {
 				//UBICA EL PUNTO DESTINO
 				var infowindow = new google.maps.InfoWindow({
 				map: map,
-				position: new google.maps.LatLng(Latdes1[var1], Lngdes1[var1]),
+				position: new google.maps.LatLng(Latdes1[0], Lngdes1[0]),
 				});
+				alert(indice);
 				//EVENTO CUANDO SE DA CLICK SOBRE EL PUNTO DESTINO
-					google.maps.event.addListener(destino[var1], 'click', function() {
-						var dialogo = mostrarInfo(Direccion_destino1[var1], Nombre_destino1[var1], Telefono_destino1[var1], Correo_destino1[var1]);
-						//var dialogo = Nombre_destino1[var1];
+				if(indice==0){
+					alert("1 "+Nombre_destino1[indice]);
+					google.maps.event.addListener(destino[0], 'click', function() {
+						alert(indice);
+						//var dialogo = mostrarInfo(Direccion_destino1[indice], Nombre_destino1[indice], Telefono_destino1[indice], Correo_destino1[indice]);
+						var dialogo = Nombre_destino1[0];
 						var infowindow = new google.maps.InfoWindow({
 						map: map,
-						position: new google.maps.LatLng(Latdes1[var1], Lngdes1[var1]),
+						position: new google.maps.LatLng(Latdes1[0], Lngdes1[0]),
 						content: dialogo										
 						});
 					});
+					}
+				else
+				{
+					alert("2 "+Nombre_destino1[indice]);
+					google.maps.event.addListener(destino[indice], 'click', function() {
+						var dialogo = "SEGUNDO";
+						var infowindow = new google.maps.InfoWindow({
+						map: map,
+						position: new google.maps.LatLng(Latdes1[1], Lngdes1[1]),
+						content: dialogo										
+						});
+					});
+				}
 }
 						
 function showDirections() {
@@ -500,7 +517,7 @@ function mostrarInfo (r_direc, r_nombre,r_tel,r_correo) {
 
 </head>
 	
-<body onload="initialize();" onresize="window.location.reload();">
+<body onload="onDeviceReady();" onresize="window.location.reload();">
 <div id="categories" data-role="page" data-title="Mapa" style="background-image: url('images/fondo_2.jpg'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
 <div height=200px style="background-image: url('images/cabecera8.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
 <div> 

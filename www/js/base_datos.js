@@ -1,5 +1,6 @@
-﻿function inicializa_db() 
+﻿function inicializa_db(conexion) 
 {
+ alert(conexion);
  var db;
  db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
  if (db) 
@@ -293,10 +294,17 @@ tx.executeSql("insert into parametro values(7,'http://servicedatosabiertoscolomb
 tx.executeSql("insert into parametro values(8,'http://servicedatosabiertoscolombia.cloudapp.net/v1/Ministerio_de_Justicia/ubicacionprogramas?$format=json','ubicacion_programa',4);")
 tx.executeSql("insert into parametro values(9,'Casa de Justicia','Casa de Justicia',5);")
 
+if (conexion == 1)
 tx.executeSql("Select count(*) as numero From palabra_clave", [],
                 function(tx, result){
                     for(var i=0; i < result.rows.length; i++) if ([result.rows.item(i)['numero']] == 0) actualiza_set_datos();					
                 });	
+else
+						    $.Zebra_Dialog('<strong>No hay conexión a Internet para actualizar la información, por favor intente más tarde!</strong>', 
+							{
+							'type':     'error',
+							'title':    'Actualización de Información'
+							});	
 
 
             });

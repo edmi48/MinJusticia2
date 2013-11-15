@@ -228,12 +228,22 @@ ventana_alto3 = ventana_alto2 - (18*factor);
 ventana_alto3 = (ventana_alto/10)*6.5;
 ventana_ancho2= (ventana_ancho2-300)/2;
 
-   document.addEventListener("deviceready", onDeviceReady, false);
-
     // PhoneGap esta listo, y ahora se pueden hacer llamadas a los métodos
     //
 
-	function abrir_opcion(pagina,obligatorio) 
+function ejecuta_actualizacion()
+{
+	if (checkConnection() == 1) {
+		actualiza_set_datos();
+	}
+	else  $.Zebra_Dialog('<strong>No es posible Actualizar Justicia para Todos sin Conexión a Internet</strong>', {
+		'type':     'error',
+		'title':    'Sin Conexión a Internet'
+	});
+} 
+	
+	
+function abrir_opcion(pagina,obligatorio) 
 { 
 if (obligatorio == 0) window.location = (pagina); 
 if ((checkConnection() == 1) || (obligatorio == 0)) {
@@ -283,7 +293,7 @@ function abrir_twitter()
      </script>	 		
 
 </head>
-<body onresize="window.location.reload();" onload="inicializa_db();">
+<body onresize="window.location.reload();" onload="inicializa_db(checkConnection());">
 		<script> 
 		document.write('<div class="meter nostripes" id="progressbar" width="90%" top="100px">');
 		document.write('</div>');
@@ -325,7 +335,7 @@ function abrir_twitter()
 					document.write('<li><a href="#" onclick="abrir_twitter();"><img src="images/opcion3.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a></li>')
 					document.write('<li><a href="#" onclick=\'abrir_opcion("sugiereme.html",1);return false\'><img src="images/opcion4.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a></li>')
 					document.write('<li><a href="creditos.html" target="_self"><img src="images/opcion5.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a></li>')
-					document.write('<li><a href="#" onclick=\'actualiza_set_datos();return false\'><img src="images/opcion6.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a></li>')
+					document.write('<li><a href="#" onclick=\'ejecuta_actualizacion();return false\'><img src="images/opcion6.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a></li>')
 				document.write('</ul>')
 			document.write('</div>')
 			document.write('<div id="divDerecha"></div>')
@@ -364,7 +374,7 @@ function abrir_twitter()
                 document.write('</div>')
 				
 		document.write('<div class="item actual" >')
-                document.write('<a href="#" onclick=\'actualiza_set_datos();return false\'><img src="images/opcion6.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
+                document.write('<a href="#" onclick=\'ejecuta_actualizacion();return false\'><img src="images/opcion6.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
                 document.write('</div>')
 				
 }			

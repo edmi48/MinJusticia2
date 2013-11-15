@@ -1,6 +1,5 @@
 ﻿function inicializa_db(conexion) 
 {
- alert(conexion);
  var db;
  db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
  if (db) 

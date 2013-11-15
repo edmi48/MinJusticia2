@@ -73,38 +73,6 @@
 
 
         }
- 
-  function ubicapuntos() {
- alert("entra");
-     db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
-    sentencia = "Select nombre_lugar, direccion_lugar, telefono_lugar, email, latitud, longitud From ubicacion_programa  where tipo_programa='"+nom_programa+"'";
- alert("Sentencia: "+sentencia);
-
-                db.transaction( function(tx) {
-                        tx.executeSql(sentencia, [],
-                                function(tx, result){
- alert(result.rows.length);
-                                        for(var i=0; i < result.rows.length; i++)  
-											{
-											
-											 Latdes = result.rows.item(i)['latitud'];
-											 Lngdes = result.rows.item(i)['longitud'];
-											 Direccion_destino = result.rows.item(i)['direccion_lugar'];
-											 Nombre_destino = result.rows.item(i)['nombre_lugar'];
-											 Telefono_destino = result.rows.item(i)['telefono_lugar'];
-											 Correo_destino = result.rows.item(i)['email'];
-											 //calcularDistancia();
-											 //alert("8"+i);
-											 if(i==0) mostrarMapa2();
-											 ingresapunto();
-											}
-                                });
-                });
-
-
-        }
- 
- 
 </script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
 <script type="text/javascript">
@@ -117,9 +85,6 @@
     //
 function onDeviceReady() {
 	//alert("4");
-	//nom_programa="Casa de Justicia";
-	//icon_destino="Casa de Justicia";
-	
 	 if (navigator.geolocation)
     {
 		navigator.geolocation.getCurrentPosition(onSuccess, onError, {maximumAge:3000,timeout:30000,enableHighAccuracy:true});
@@ -158,10 +123,8 @@ function onSuccess(position) {
 function onError(error) {
 	if(error.code==1)
 	{
-		alert("sin punto de origen");
-		ubicapuntos();
-		//alert("No es posible ingresar a la funcionalidad por denegar permisos de ubicación");
-		//window.location="index.html";
+		alert("No es posible ingresar a la funcionalidad por denegar permisos de ubicación");
+		window.location="index.html";
 /* $.Zebra_Dialog('No es posible ingresar a la funcionalidad por denegar permisos de ubicación', {
     'type':     'error',
     'title':    'Error en la generación del Mapa',
@@ -258,7 +221,7 @@ var url = location.href;
 										  icon_destino="Centro de Convivencia Ciudadana";
 										 }
 	//alert("3");						 
-										 alert(result.rows.item(0)['valor_parametro']);
+										 //alert(result.rows.item(0)['valor_parametro']);
 										 onDeviceReady();		
 	//mostrarMapa();	
 //InicializaDatos();	
@@ -314,25 +277,14 @@ function mostrarMapa(){
 			directionsService = new google.maps.DirectionsService();
 			directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 			//alert("motrar mapa");
-			
-			var myLatlng = new google.maps.LatLng(4.599047, -74.080917);
-			// Se carga el mapa de Colombia
-			var myOptions = {
-			  zoom: 5,
-			  center: myLatlng,
-			  mapTypeId: google.maps.MapTypeId.ROADMAP,
-			  disableDefaultUI: false,
-			  scrollwheel: true,
-			  draggable: true,
-			  navigationControl: true,
-			  mapTypeControl: false,
-			  scaleControl: true,
-			  disableDoubleClickZoom: false
-			};
-			
-				var mtv = new google.maps.LatLng(Latori, Lngori);
+			var mtv = new google.maps.LatLng(Latori, Lngori);
 				showDirections();
-				map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+				map = new google.maps.Map(document.getElementById('map_canvas'), {
+					center : mtv,
+					zoom : 13,
+					mapTypeId : 'roadmap',
+					icon: 'images/derecha.png'
+				});
 				//COLOCA EL ICONO DEL ORIGEN
 				var origen = new google.maps.Marker({
 				position: new google.maps.LatLng(Latori, Lngori),
@@ -392,68 +344,6 @@ function mostrarMapa(){
 				//directionsDisplay.setPanel(document.getElementById("directions-panel"));
 
 			}
-			
-			
-function mostrarMapa2(){	
-			MyOrigin = new google.maps.LatLng(Latori, Lngori);
-			MyDestination = new google.maps.LatLng(Latdes, Lngdes);
-			directionsService = new google.maps.DirectionsService();
-			directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-			//alert("motrar mapa");
-			
-			var myLatlng = new google.maps.LatLng(4.599047, -74.080917);
-			// Se carga el mapa de Colombia
-			var myOptions = {
-			  zoom: 5,
-			  center: myLatlng,
-			  mapTypeId: google.maps.MapTypeId.ROADMAP,
-			  disableDefaultUI: false,
-			  scrollwheel: true,
-			  draggable: true,
-			  navigationControl: true,
-			  mapTypeControl: false,
-			  scaleControl: true,
-			  disableDoubleClickZoom: false
-			};
-			
-				var mtv = new google.maps.LatLng(Latori, Lngori);
-				showDirections();
-				map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
-				
-			}
-			
-function ingresapunto() {		
-//COLOCA EL ICONO DEL DESTINO
-				if (icon_destino =="Casa de Justicia") {
-					var destino = new google.maps.Marker({
-					position: new google.maps.LatLng(Latdes, Lngdes),
-					icon: 'images/cj.png',
-					map: map
-					});
-				}
-				else
-				{
-					var destino = new google.maps.Marker({
-					position: new google.maps.LatLng(Latdes, Lngdes),
-					icon: 'images/ccc.png',
-					map: map
-					});
-				}
-				//UBICA EL PUNTO DESTINO
-				var infowindow = new google.maps.InfoWindow({
-				map: map,
-				position: new google.maps.LatLng(Latdes, Lngdes),
-				});
-				//EVENTO CUANDO SE DA CLICK SOBRE EL PUNTO DESTINO
-				google.maps.event.addListener(destino, 'click', function() {
-					var dialogo = mostrarInfo(Direccion_destino, Nombre_destino, Telefono_destino, Correo_destino);
-					var infowindow = new google.maps.InfoWindow({
-					map: map,
-					position: new google.maps.LatLng(Latdes, Lngdes),
-					content: dialogo										
-					});
-				});
-}
 						
 function showDirections() {
   

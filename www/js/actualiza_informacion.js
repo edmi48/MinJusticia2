@@ -18,6 +18,7 @@ function actualiza_progressbar(por_ini,por_fin)
 function actualiza_set_datos()
 {
  var db;
+ var continua = 1;
  var porc_ini = 0;
  var porc_fin = 20;
  db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
@@ -34,9 +35,10 @@ function actualiza_set_datos()
                  function(tx, result)
 				 {				 
                   for(var i=0; i < result.rows.length; i++) 
-				  {
-				   actualiza_informacion(result.rows.item(i)['convencion_parametro'],result.rows.item(i)['valor_parametro']);
-				  }
+	               if (continua == 1)
+				   {
+				    actualiza_informacion(result.rows.item(i)['convencion_parametro'],result.rows.item(i)['valor_parametro']);
+				   }
 				 }); 
             });
     }
@@ -51,10 +53,14 @@ function actualiza_informacion(tabla, url)
                     url : url,
                     type : 'GET',
                     dataType : 'json',
-                    error: function() { 
-						 $.Zebra_Dialog('<strong>El catálogo de datos '+tabla+' no se encuentra disponible</strong>', {
+                    error: function() 
+					       { 
+						    $.Zebra_Dialog('<strong>El catálogo de datos '+tabla+' no se encuentra disponible. Intente más tarde!</strong>', 
+							{
 							'type':     'error',
-							'title':    'Actualización de Información'});
+							'title':    'Actualización de Información'
+							});
+						    continua = 0:
 						   }
                 });
 
@@ -129,11 +135,8 @@ function actualiza_informacion(tabla, url)
 					 //alert("Informacion "+tabla+": "+contador);
 					 if (tabla == 'ubicacion_programa')
 					 {						 
+					  actualiza_progressbar('70%','80%');
 					  actualiza_progressbar('80%','100%');
-
-			  $.Zebra_Dialog('<strong>Actualización de Información Finalizada exitósamente</strong>', {
-							'type':     'information',
-							'title':    'Actualización de Información'});
 	  				}
                  });		
 			 }

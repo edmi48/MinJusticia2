@@ -101,19 +101,35 @@ function carga_informacion(sql,objeto,info)
 
 function mapa(entidad)
 {
-  var db;
-	db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
-	//alert(entidad);
-    sentencia = "update parametro set valor_parametro = '"+entidad+"' where codigo_tparametro = 5";
+	if (checkConnection() == 1) {
+		
+		var db;
+		db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
+		sentencia = "update parametro set valor_parametro = '"+entidad+"' where codigo_tparametro = 5";
                db.transaction( function(tx) {
                         tx.executeSql(sentencia, [],
                                 function(tx, result){
-									if (device.platform  == 'iOS') {
-										window.location = ("mapa.html"); 
-									}
-									else {
-									     setInterval(function(){window.location = ("mapa.html");},2000);
-									}
+										
+									     window.location = ("mapa.html"); 
+										 
 										 });
 								   }); 
+	}
+	else  {
+	alert("No es posible ejecutar esta funcionalidad sin Conexión a Internet");
+	} 
+ 
+}
+
+function checkConnection() 
+{
+	//alert("checkConnection");
+	//alert(navigator.connection.type);
+		 if(navigator.connection.type == Connection.NONE){ 
+		  var conexion = 0;
+		  }else{
+		  var conexion = 1;
+		  }
+		 // alert(conexion);
+		 return conexion;
 }

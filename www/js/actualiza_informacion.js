@@ -60,7 +60,7 @@ function actualiza_informacion(tabla, url)
 							'type':     'error',
 							'title':    'Actualización de Información'
 							});
-						    continua = 0:
+						    continua = 0;
 						   }
                 });
 

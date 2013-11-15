@@ -74,35 +74,7 @@
 
         }
  
-  function ubicapuntos() {
- alert("entra");
-     db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
-    sentencia = "Select nombre_lugar, direccion_lugar, telefono_lugar, email, latitud, longitud From ubicacion_programa  where tipo_programa='"+nom_programa+"'";
- alert("Sentencia: "+sentencia);
-
-                db.transaction( function(tx) {
-                        tx.executeSql(sentencia, [],
-                                function(tx, result){
- alert(result.rows.length);
-                                        for(var i=0; i < result.rows.length; i++)  
-											{
-											
-											 Latdes = result.rows.item(i)['latitud'];
-											 Lngdes = result.rows.item(i)['longitud'];
-											 Direccion_destino = result.rows.item(i)['direccion_lugar'];
-											 Nombre_destino = result.rows.item(i)['nombre_lugar'];
-											 Telefono_destino = result.rows.item(i)['telefono_lugar'];
-											 Correo_destino = result.rows.item(i)['email'];
-											 //calcularDistancia();
-											 //alert("8"+i);
-											 if(i==0) mostrarMapa2();
-											 ingresapunto();
-											}
-                                });
-                });
-
-
-        }
+ 
  
  
 </script>
@@ -117,8 +89,6 @@
     //
 function onDeviceReady() {
 	//alert("4");
-	//nom_programa="Casa de Justicia";
-	//icon_destino="Casa de Justicia";
 	
 	 if (navigator.geolocation)
     {
@@ -158,7 +128,7 @@ function onSuccess(position) {
 function onError(error) {
 	if(error.code==1)
 	{
-		alert("sin punto de origen");
+		//alert("sin punto de origen");
 		ubicapuntos();
 		//alert("No es posible ingresar a la funcionalidad por denegar permisos de ubicación");
 		//window.location="index.html";
@@ -258,7 +228,7 @@ var url = location.href;
 										  icon_destino="Centro de Convivencia Ciudadana";
 										 }
 	//alert("3");						 
-										 alert(result.rows.item(0)['valor_parametro']);
+										 //alert(result.rows.item(0)['valor_parametro']);
 										 onDeviceReady();		
 	//mostrarMapa();	
 //InicializaDatos();	
@@ -422,6 +392,39 @@ function mostrarMapa2(){
 				
 			}
 			
+var indice=0;
+			
+ function ubicapuntos() {
+ //alert("entra");
+     db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
+    sentencia = "Select nombre_lugar, direccion_lugar, telefono_lugar, email, latitud, longitud From ubicacion_programa  where tipo_programa='"+nom_programa+"'";
+ //alert("Sentencia: "+sentencia);
+
+                db.transaction( function(tx) {
+                        tx.executeSql(sentencia, [],
+                                function(tx, result){
+ //alert(result.rows.length);
+                                        for(var i=0; i < result.rows.length; i++)  
+											{
+											
+											 Latdes = result.rows.item(i)['latitud'];
+											 Lngdes = result.rows.item(i)['longitud'];
+											 Direccion_destino = result.rows.item(i)['direccion_lugar'];
+											 Nombre_destino = result.rows.item(i)['nombre_lugar'];
+											 Telefono_destino = result.rows.item(i)['telefono_lugar'];
+											 Correo_destino = result.rows.item(i)['email'];
+											 //calcularDistancia();
+											 //alert("8"+i);
+											 indice=i;
+											 if(i==0) mostrarMapa2();
+											 ingresapunto();
+											}
+                                });
+                });
+
+
+        }
+			
 function ingresapunto() {		
 //COLOCA EL ICONO DEL DESTINO
 				if (icon_destino =="Casa de Justicia") {
@@ -436,7 +439,8 @@ function ingresapunto() {
 					var destino = new google.maps.Marker({
 					position: new google.maps.LatLng(Latdes, Lngdes),
 					icon: 'images/ccc.png',
-					map: map
+					map: map,
+					title: Nombre_destino+"\n"+Direccion_destino,
 					});
 				}
 				//UBICA EL PUNTO DESTINO
@@ -445,14 +449,7 @@ function ingresapunto() {
 				position: new google.maps.LatLng(Latdes, Lngdes),
 				});
 				//EVENTO CUANDO SE DA CLICK SOBRE EL PUNTO DESTINO
-				google.maps.event.addListener(destino, 'click', function() {
-					var dialogo = mostrarInfo(Direccion_destino, Nombre_destino, Telefono_destino, Correo_destino);
-					var infowindow = new google.maps.InfoWindow({
-					map: map,
-					position: new google.maps.LatLng(Latdes, Lngdes),
-					content: dialogo										
-					});
-				});
+				
 }
 						
 function showDirections() {

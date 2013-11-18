@@ -109,42 +109,37 @@ function actualiza_informacion(tabla, url)
 	 return campo;
 	}
 		
-		function actualiza_tabla(tabla)
-		{
+  function actualiza_tabla(tabla)
+  {
 
- var db;
- db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
- if (db) 
- {
+   var db;
+   db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
+   if (db) 
+   {
         db.transaction( function(tx) {
-
-			for(var i=0; i < sql_query.length; i++)
+			var contador = sql_query.length - 1;
+			for(var j=0; j < sql_query.length; j++)
 			{
-			 if (i == 0) 
+			 if (j == 0) 
 			 {
 			  tx.executeSql("Delete from "+tabla);
 			  if (tabla == 'informacion_programa') tx.executeSql("Delete from palabra_clave");
 			 } 
-			 tx.executeSql(sql_query[i]);
-			 if (i == (sql_query.length - 1))
-			 {
-              tx.executeSql("Select count(*) as numero From "+tabla, [],
-                 function(tx, result){
-                     for(var i=0; i < result.rows.length; i++) var contador = [result.rows.item(i)['numero']];
-					 //alert("Informacion "+tabla+": "+contador);
-					 if (tabla == 'ubicacion_programa')
+			 tx.executeSql(sql_query[j], [],
+                 function(tx, result, j, contador){
+			     if ((j == contador) && (tabla == 'ubicacion_programa'))
 					 {						 
 					  actualiza_progressbar('70%','80%');
 					  actualiza_progressbar('80%','100%');
-	  				}
-                 });		
-			 }
+	  				 }
+		
+			    });
+
 			}
 
 
         });			
- }		
-		}   
-		
-}	
+   }		
+  }   		
+ }	
 }

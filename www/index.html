@@ -161,7 +161,7 @@ document.addEventListener("backbutton", onBackKeyDown, false);
 function onBackKeyDown() {
     // Handle the back button
 	alert("cierra la aplicacion");
-	self.close();
+	navigator.app.exitApp();
 }
 	
 

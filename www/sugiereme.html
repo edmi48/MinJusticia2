@@ -1,6 +1,6 @@
 ﻿﻿<html class="no-js ui-mobile-rendering" lang="es">
 <head>
-      <title>TODO BIEN - SUGIEREME</title>
+      <title>Sugiéreme</title>
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <script src="js/jquery-1.9.1.min.js"></script>
@@ -20,7 +20,7 @@
 </head>
 
 <body onload="leer_destinatario();">
-<div id="categories" data-role="page" data-title="Sugiereme" style="background-image: url('images/fondo_2.jpg'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
+<div id="categories" data-role="page" data-title="Sugiereme" style="background-image: url('images/fondo_2.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
 <div height=200px style="background-image: url('images/cabecera4.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
 <div> 
 <a href="index.html"> <img src="images/regresar.png" class="imagen-link" height="60px" width="60px" align="left" style="margin: 5px 8px"></a>
@@ -33,18 +33,22 @@
 <div>
 		<h1></h1>
 	</div>	
- <div>
+ <div style="width: 86%; height: 90%; margin: 0% 7%">
+ <br>
  <h3>Nombre*</h3><input type="text" id="t_nombre"  value="" size="60" maxlength="128"/>
 </div>
 
- <div>
+ <div style="width: 86%; height: 90%; margin: 0% 7%">
  <h3>Teléfono*</h3><input type="tel" id="t_telefono"  value="" size="60" maxlength="25"/>
 </div>
 
- <div>
+ <div style="width: 86%; height: 90%; margin: 0% 7%">
  <h3>Sugerencia*</h3><textarea id="t_sugerencia"  value="" size="60" maxlength="200"></textarea>
 </div>
- <div>
+
+<br>
+
+ <div style="width: 86%; height: 90%; margin: 0% 7%">
  <p><a href="index.html" data-direction="reverse" data-role="button" data-theme="b" onClick="sendEmail(); return false;">Enviar</a></p>
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -94,7 +98,7 @@
 function leer_destinatario()
 {
   var db;
-  db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
+  db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
   db.transaction(function(tx) 
 				 {
             	  tx.executeSql("SELECT convencion_parametro, valor_parametro FROM parametro where codigo_tparametro = 1", [],

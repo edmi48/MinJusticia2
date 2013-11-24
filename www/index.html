@@ -8,11 +8,11 @@
 		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="js/zebra_dialog.js"></script>
 		<script type="text/javascript" src="js/carrusel.js"></script>
+		<script type="text/javascript" src="js/jquery.blockUI.js"></script>
 		<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 
 		<!-- Librería empleada en la Construcción del Menú		-->
-        <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-		<script src="js/jquery.mobile-1.3.1.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.3.1.js"></script>
 		
 		
 		<link rel="stylesheet"  href="css/jquery.mobile-1.3.1.min.css">
@@ -205,8 +205,8 @@
 	  } 
 	  var ventana_medio = ventana_alto2/2;
   
-	  if ($(window).width() < $(window).height()) factor = 7.22;
-	 else factor = 6.50;
+	  if ($(window).width() < $(window).height()) factor = 6.22;
+	 else factor = 6;
 
 	 
 	 
@@ -315,14 +315,14 @@ function abrir_twitter()
 	var icon_ancho;
 	ventana_alto3 = ventana_alto3;
 	if ($(window).width() < $(window).height()) {
-		icon_alto = 70;				
+		icon_alto = 80;				
 		icon_ancho = 65;
-		
+		ventana_alto3 = (($(window).height())/10)*5.5;
 	}
 	else {
-		icon_alto = 65;				
+		icon_alto = 80;				
 		icon_ancho = 60;
-		ventana_alto3 = (($(window).height())/10)*5.7;
+		ventana_alto3 = (($(window).height())/10)*5.2;
 	}
  if ($(window).width() < 490)
  {
@@ -345,12 +345,12 @@ function abrir_twitter()
  else 
  {
 		if ($(window).width() < $(window).height()) {
-			icon_alto = ($(window).height())/9;				
+			icon_alto = ($(window).height())/7.8;				
 			icon_ancho = ($(window).height())/10;
 		}
 		else
 		{
-			icon_alto = ($(window).height())/6;				
+			icon_alto = ($(window).height())/5.5;				
 			icon_ancho = ($(window).height())/7;
 		}
 		document.write('<div class="item shop">')

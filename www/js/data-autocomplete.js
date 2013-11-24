@@ -1,7 +1,7 @@
 $(function(){
   var currencies = [];
   var db;
-     db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
+     db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
 
   	 db.transaction(function(tx) 
 				    {				
@@ -69,7 +69,7 @@ $(function(){
 function carga_informacion(sql,objeto,info)
 {
    var db;
-     db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
+     db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
   	 					  db.transaction(function(tx) 
 									    {				
            	  	 tx.executeSql(sql, [],
@@ -102,7 +102,7 @@ function carga_informacion(sql,objeto,info)
 function mapa(entidad)
 {
   var db;
-	db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
+	db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
 	//alert(entidad);
     sentencia = "update parametro set valor_parametro = '"+entidad+"' where codigo_tparametro = 5";
                db.transaction( function(tx) {

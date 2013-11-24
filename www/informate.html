@@ -80,7 +80,7 @@
  </style>
 </head>
 <body>
-<div id="categories" data-role="page" data-title="Infórmate" style="background-image: url('images/fondo_2.jpg'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
+<div id="categories" data-role="page" data-title="Infórmate" style="background-image: url('images/fondo_2.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
 <div height=200px style="background-image: url('images/cabecera2.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
 <div> 
 <a href="index.html"> <img src="images/regresar.png" class="imagen-link" height="60px" width="60px" align="left" style="margin: 5px 8px"></a>
@@ -91,7 +91,7 @@
 <script>
 
  var db;
- db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
+ db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
  db.transaction(function(tx) 
 				{
             	 tx.executeSql("SELECT convencion_parametro, valor_parametro FROM parametro where codigo_tparametro = 3", [],

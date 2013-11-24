@@ -1,7 +1,7 @@
 ﻿function inicializa_db(conexion) 
 {
  var db;
- db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
+ db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
  if (db) 
  {
             // Database opened
@@ -95,7 +95,7 @@ db.transaction( function(tx) {
 	 
 /* ---------------------------------------------------------------------- */
 /* Target DBMS:           SQLite3                                         */
-/* Project file:          Ministerio de Justicia SqlLite.dez              */
+/* Project file:          Justicia para Todos SqlLite.dez              */
 /* Project name:          TODO BIEN                                       */
 /* Author:                Simón Moya Jiménez                              */
 /* Script type:           Database creation script                        */
@@ -283,27 +283,31 @@ tx.executeSql("insert into tipo_parametro values(5,'Generar Mapa');")
 
 tx.executeSql("Delete from parametro;")
 
-tx.executeSql("insert into parametro values(1,'simonmoya@gmail.com','E-mail Ministerio de Justicia',1);")
-tx.executeSql("insert into parametro values(2,'winnie54817@gmail.com','E-mail Ministerio de Justicia',1);")
-tx.executeSql("insert into parametro values(3,'hmoreno@ospinternational.com','E-mail Ministerio de Justicia',1);")
-tx.executeSql("insert into parametro values(4,'MinjusticiaCo','Ministerio de Justicia',2);")
+tx.executeSql("insert into parametro values(1,'simonmoya@gmail.com','E-mail Justicia para Todos',1);")
+tx.executeSql("insert into parametro values(2,'winnie54817@gmail.com','E-mail Justicia para Todos',1);")
+tx.executeSql("insert into parametro values(3,'hmoreno@ospinternational.com','E-mail Justicia para Todos',1);")
+tx.executeSql("insert into parametro values(4,'MinjusticiaCo','Justicia para Todos',2);")
 tx.executeSql("insert into parametro values(5,'hC9tD_GTxNg','Casas de Justicia',3);")
 tx.executeSql("insert into parametro values(6,'mcf8Wwqw4JQ','Centros de Convivencia Ciudadana',3);")
 tx.executeSql("insert into parametro values(7,'http://servicedatosabiertoscolombia.cloudapp.net/v1/Ministerio_de_Justicia/informacionprogramas?$format=json','informacion_programa',4);")
 tx.executeSql("insert into parametro values(8,'http://servicedatosabiertoscolombia.cloudapp.net/v1/Ministerio_de_Justicia/ubicacionprogramas?$format=json','ubicacion_programa',4);")
 tx.executeSql("insert into parametro values(9,'Casa de Justicia','Casa de Justicia',5);")
 
-if (conexion == 1)
+
 tx.executeSql("Select count(*) as numero From palabra_clave", [],
                 function(tx, result){
-                    for(var i=0; i < result.rows.length; i++) if ([result.rows.item(i)['numero']] == 0) actualiza_set_datos();					
-                });	
-else
-						    $.Zebra_Dialog('<strong>No hay conexión a Internet para actualizar la información, por favor intente más tarde!</strong>', 
-							{
+                    for(var i=0; i < result.rows.length; i++) 
+                     if ([result.rows.item(i)['numero']] == 0)
+                     {					 
+					  if (conexion == 1) actualiza_set_datos();					
+					  else
+					   $.Zebra_Dialog('<strong>No hay conexión a Internet para actualizar la información, por favor intente más tarde!</strong>', 
+					  {
 							'type':     'error',
 							'title':    'Actualización de Información'
-							});	
+					  });
+					 }
+                    });	
 
 
             });

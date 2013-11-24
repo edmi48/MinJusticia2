@@ -37,7 +37,7 @@
   var container = document.getElementById(nombre_objeto)
   html += "<table border=1 id='"+nombre_tabla+"' align=center><thead><tr><th>Ubicación</th>";
   html += "<th>Más Información</th></tr></thead><tbody>";
-  db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
+  db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
 
         db.transaction( function(tx) {
 			if (indicador == 1) sql = "SELECT departamento, municipio, nombre_lugar, direccion_lugar, barrio_lugar, telefono_lugar, email FROM ubicacion_programa Where tipo_programa = 'Casa de Justicia' order by departamento, municipio, direccion_lugar";
@@ -65,7 +65,6 @@
  }
  
 </script>		
-		<link rel="stylesheet" type="text/css" href="css/style_offline.css">
       <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
       <script src="js/libs/require.js" data-main="js/mobile"></script>
 	  
@@ -93,7 +92,7 @@
 		</script>	  
 	</head>
 	<body>
-<div id="categories" data-role="page" data-title="Búsqueda de Información" style="background-image: url('images/fondo_2.jpg'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
+<div id="categories" data-role="page" data-title="Búsqueda de Información" style="background-image: url('images/fondo_2.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
 <div height=200px style="background-image: url('images/cabecera7.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
 <div> 
 <a href="orientate.html" rel="external"> <img src="images/regresar.png" class="imagen-link" height="60px" width="60px" align="left" style="margin: 5px 8px"></a>

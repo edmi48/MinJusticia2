@@ -11,8 +11,10 @@ function actualiza_progressbar(por_ini,por_fin)
    .width(por_ini)
    .animate({
    width: por_fin
-   }, 3000);
-  });		
+   }, 1000);
+  });	
+
+  
 }
 
 function actualiza_set_datos()
@@ -21,7 +23,7 @@ function actualiza_set_datos()
  var continua = 1;
  var porc_ini = 0;
  var porc_fin = 20;
- db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
+ db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
  actualiza_progressbar(porc_ini+'%',porc_fin+'%');
  porc_ini = porc_fin;
  porc_fin = porc_fin + 20;
@@ -30,7 +32,8 @@ function actualiza_set_datos()
     'title':    'Actualización de Información',
     'buttons':  ['Aceptar'],
     'onClose':  function(caption) {
- db.transaction(function(tx) {
+				$('div.navigation').block({ message: null });
+				db.transaction(function(tx) {
  				 tx.executeSql("SELECT valor_parametro, convencion_parametro FROM parametro where codigo_tparametro = 4", [],
                  function(tx, result)
 				 {				 
@@ -113,7 +116,7 @@ function actualiza_informacion(tabla, url)
   {
 
    var db;
-   db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
+   db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
    if (db) 
    {
         db.transaction( function(tx) {
@@ -129,8 +132,8 @@ function actualiza_informacion(tabla, url)
                  function(tx, result, j, contador){
 			     if ((j == contador) && (tabla == 'ubicacion_programa'))
 					 {						 
-					  actualiza_progressbar('70%','80%');
-					  actualiza_progressbar('80%','100%');
+					  actualiza_progressbar('70%','100%');
+					  $('div.navigation').unblock();
 	  				 }
 		
 			    });

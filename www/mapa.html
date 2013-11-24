@@ -1,6 +1,6 @@
 ﻿<html class="no-js ui-mobile-rendering" lang="es">
 <head>
-      <title>ORIENTATE</title>
+      <title>Mapa</title>
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
@@ -47,7 +47,7 @@
 // InicializaDatos();
 
         function InicializaDatos() {
-     db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
+     db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
     sentencia = "Select nombre_lugar, direccion_lugar, telefono_lugar, email, latitud, longitud From ubicacion_programa  where tipo_programa='"+nom_programa+"'";
 // alert("Sentencia: "+sentencia);
 
@@ -213,7 +213,7 @@ var url = location.href;
 	var url = location.href;
 	var index = url.indexOf("?");
 	
-	db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
+	db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
     sentencia = "select valor_parametro from parametro where codigo_tparametro = 5";
                db.transaction( function(tx) {
                         tx.executeSql(sentencia, [],
@@ -404,7 +404,7 @@ var Lngdes1 = [];
 
  function ubicapuntos() {
  //alert("entra");
-     db = openDatabase("ejemplo3.db3", "1.0", "Ministerio de Justicia", 500000);
+     db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
     sentencia = "Select nombre_lugar, direccion_lugar, telefono_lugar, email, latitud, longitud From ubicacion_programa  where tipo_programa='"+nom_programa+"'";
  //alert("Sentencia: "+sentencia);
 
@@ -495,13 +495,11 @@ function mostrarInfo (r_direc, r_nombre,r_tel,r_correo) {
 
 		
 </script>
-	  <script type="text/javascript" src="js/zebra_dialog.js"></script>
-	  <link rel="stylesheet" href="css/zebra_dialog.css" type="text/css">
 
 </head>
 	
 <body onload="initialize();" onresize="window.location.reload();">
-<div id="categories" data-role="page" data-title="Mapa" style="background-image: url('images/fondo_2.jpg'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
+<div id="categories" data-role="page" data-title="Mapa" style="background-image: url('images/fondo_2.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
 <div height=200px style="background-image: url('images/cabecera8.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
 <div> 
 <a href="orientate.html" target="_self"> <img src="images/regresar.png" class="imagen-link" height="60px" width="60px" align="left" style="margin: 5px 8px"></a>

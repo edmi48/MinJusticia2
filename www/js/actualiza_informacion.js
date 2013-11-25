@@ -27,7 +27,7 @@ function actualiza_set_datos()
  actualiza_progressbar(porc_ini+'%',porc_fin+'%');
  porc_ini = porc_fin;
  porc_fin = porc_fin + 20;
- $.Zebra_Dialog('<strong>Inicia proceso de actualización de información de click en aceptar y por favor espere un momento a que el proceso finalice...', {
+ $.Zebra_Dialog('<strong>Inicia proceso de actualización de información, de click en aceptar y espere a que finalice...', {
     'type':     'information',
     'title':    'Actualización de Información',
     'buttons':  ['Aceptar'],

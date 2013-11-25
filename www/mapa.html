@@ -129,6 +129,7 @@ function onSuccess(position) {
 function onError(error) {
 	if(error.code==1)
 	{
+		
 		//alert("sin punto de origen");
 		ubicapuntos();
 		//alert("No es posible ingresar a la funcionalidad por denegar permisos de ubicación");
@@ -144,7 +145,7 @@ function onError(error) {
 	}
 	else if(error.code==3)
 	{
-		alert("3 Verifique los servicios de ubicación para ver su posición en el mapa");
+		alert("Para visualizar Mi ubicación: \n  * Activar la ubicación de redes móviles y GPS \n  * Activar Wi-Fi");
 		ubicapuntos();
 /* $.Zebra_Dialog('<strong>1.</strong>Compruebe su conexión a Internet<br><strong>2.</strong>Compruebe la activación de Ubicación por GPS y/o WI FI<br><strong>3.</strong>Si persiste el problema, reinicie su dispositivo móvil', {
     'type':     'error',
@@ -159,7 +160,7 @@ function onError(error) {
 	}
 	else if(error.code==2)
 	{
-		alert("2 Verifique los servicios de ubicación para ver su posición en el mapa");
+		alert("Para visualizar Mi ubicación: \n  * Activar la ubicación de redes móviles y GPS \n  * Activar Wi-Fi.");
 		ubicapuntos();
  /*$.Zebra_Dialog('<strong>1.</strong>Compruebe su conexión a Internet<br><strong>2.</strong>Compruebe la activación de Ubicación por GPS y/o WI FI<br><strong>3.</strong>Si persiste el problema, reinicie su dispositivo móvil', {
     'type':     'error',

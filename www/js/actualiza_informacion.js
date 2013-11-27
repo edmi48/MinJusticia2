@@ -134,6 +134,7 @@ function actualiza_informacion(tabla, url)
 					 {						 
 					  actualiza_progressbar('70%','100%');
 					  $('div.navigation').unblock();
+					  window.location = ("index.html"); 
 	  				 }
 		
 			    });

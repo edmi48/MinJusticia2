@@ -11,7 +11,7 @@ function actualiza_progressbar(por_ini,por_fin)
    .width(por_ini)
    .animate({
    width: por_fin
-   }, 1000);
+   }, 3000);
   });	
 
   

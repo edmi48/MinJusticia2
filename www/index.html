@@ -266,6 +266,9 @@ else  $.Zebra_Dialog('<strong>No es posible ejecutar esta funcionalidad sin Cone
 
 function abrir_twitter()
 {
+	 db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
+		window.open('https://mobile.twitter.com/MinjusticiaCo', '_blank', 'location=yes','closebuttoncaption=Regresar');
+		/*
 	if (checkConnection() == 1) {
 		 db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
 		window.open('https://mobile.twitter.com/MinjusticiaCo', '_blank', 'location=yes','closebuttoncaption=Regresar');
@@ -273,7 +276,7 @@ function abrir_twitter()
 	else  $.Zebra_Dialog('<strong>No es posible ejecutar esta funcionalidad sin Conexión a Internet</strong>', {
 		'type':     'error',
 		'title':    'Sin Conexión a Internet'
-	});
+	});*/
 /*
  if (device.platform  == 'iOS') {
 	if (checkConnection() == 1) {

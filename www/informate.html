@@ -4,11 +4,23 @@
 
       <meta http-equiv="Content-Type" name="viewport" content="width=device-width; initial-scale=1; charset=UTF-8">
 	  <script src="js/jquery-1.9.1.min.js"></script>
+	  <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 
 	<script>var array_youtube = new Array();</script>
 
 	  
  <script type='text/javascript'> 
+  
+  function onDeviceReady() 
+{
+ document.addEventListener("backbutton", onBackKeyDown, false);
+}	
+
+function onBackKeyDown() {
+	window.location = ("index.html"); 
+}
+
+document.addEventListener("deviceready", onDeviceReady, false);
   
  function mostrarYoutube(search_input,id)
  {

@@ -269,7 +269,8 @@ else  $.Zebra_Dialog('<strong>No es posible ejecutar esta funcionalidad sin Cone
 
 function Close(event) { 
 alert("cerrar");
-MyWindow.removeEventListener('exit', Close); 
+MyWindow.close();
+window.location = ("index.html"); 
 } 
 
 function abrir_twitter()

@@ -267,10 +267,16 @@ else  $.Zebra_Dialog('<strong>No es posible ejecutar esta funcionalidad sin Cone
 });
 } 
 
+function Close(event) { 
+alert("cerrar");
+MyWindow.removeEventListener('exit', Close); 
+} 
+
 function abrir_twitter()
 {
 	
-		MyWindow = window.open('https://mobile.twitter.com/MinjusticiaCo', '_blank', 'location=no');
+		MyWindow = window.open('https://mobile.twitter.com/MinjusticiaCo', '_blank', 'location=yes');
+		MyWindow.addEventListener('exit', Close); 
 		/*
 	if (checkConnection() == 1) {
 		 db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);

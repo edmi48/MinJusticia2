@@ -155,8 +155,9 @@
         </style>
 
 	<script type="text/javascript" charset="utf-8">
-	myWindow.close();  
-	
+var MyWindow;
+//Mywindow.close();	  
+	alert("otra vez");
 function onDeviceReady() 
 {
  document.addEventListener("backbutton", onBackKeyDown, false);
@@ -269,8 +270,7 @@ else  $.Zebra_Dialog('<strong>No es posible ejecutar esta funcionalidad sin Cone
 function abrir_twitter()
 {
 	
-		myWindow = window.open('https://mobile.twitter.com/MinjusticiaCo', '_blank', 'location=no');
-		 db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
+		MyWindow = window.open('https://mobile.twitter.com/MinjusticiaCo', '_blank', 'location=no');
 		/*
 	if (checkConnection() == 1) {
 		 db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);

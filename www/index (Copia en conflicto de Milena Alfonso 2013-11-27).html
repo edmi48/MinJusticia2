@@ -2,7 +2,7 @@
 <html class="no-js ui-mobile-rendering" lang="es">
 <head>
         <title>Justicia para Todos</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8; no-cache"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
 
 		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
@@ -10,6 +10,7 @@
 		<script type="text/javascript" src="js/carrusel.js"></script>
 		<script type="text/javascript" src="js/jquery.blockUI.js"></script>
 		<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+		<script type="text/javascript" src="childbrowser.js"></script>
 
 		<!-- Librería empleada en la Construcción del Menú		-->
 		<script type="text/javascript" src="js/jquery.mobile-1.3.1.js"></script>
@@ -155,7 +156,8 @@
         </style>
 
 	<script type="text/javascript" charset="utf-8">
-var MyWindow;
+
+		//MyWindow.addEventListener('exit', Close); 
 function onDeviceReady() 
 {
  document.addEventListener("backbutton", onBackKeyDown, false);
@@ -273,22 +275,23 @@ window.location = ("index.html");
 
 function abrir_twitter()
 {
-//		alert("antes del plugin");
+		window.open('https://mobile.twitter.com/MinjusticiaCo', '_blank', 'location=yes','closebuttoncaption=Regresar');
+		//alert("antes del plugin");
 		//window.plugins.childBrowser.showWebPage('https://mobile.twitter.com/MinjusticiaCo',{ showLocationBar: true });
 		//window.plugins.childBrowser.showWebPage('http://www.google.com/',{ showLocationBar: true });
-//		window.plugins.childBrowser.openExternal('https://mobile.twitter.com/MinjusticiaCo');
-//		alert("despues del plugin");
+		//window.plugins.childBrowser.openExternal('https://mobile.twitter.com/MinjusticiaCo');
+		//alert("despues del plugin");
 		//MyWindow = window.open('https://mobile.twitter.com/MinjusticiaCo', '_blank', 'location=yes');
 		//MyWindow.addEventListener('exit', Close); 
-		
+		/*
 	if (checkConnection() == 1) {
-		db = window.openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
+		 db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
 		window.open('https://mobile.twitter.com/MinjusticiaCo', '_blank', 'location=yes','closebuttoncaption=Regresar');
 	}
 	else  $.Zebra_Dialog('<strong>No es posible ejecutar esta funcionalidad sin Conexión a Internet</strong>', {
 		'type':     'error',
 		'title':    'Sin Conexión a Internet'
-	});
+	});*/
 /*
  if (device.platform  == 'iOS') {
 	if (checkConnection() == 1) {
@@ -387,8 +390,8 @@ function abrir_twitter()
                 document.write('</div>')
 				
                 document.write('<div class="item fav">')
-                document.write('<a href="#" onclick="abrir_twitter();"><img src="images/opcion3.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
-				//document.write('<a href="#" onclick=\'abrir_opcion("sigueme2.html",1);return false\'><img src="images/opcion3.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
+                //document.write('<a href="#" onclick="abrir_twitter();"><img src="images/opcion3.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
+				document.write('<a href="#" onclick=\'abrir_opcion("sigueme2.html",1);return false\'><img src="images/opcion3.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
                 document.write('</div>')
 				
                 document.write('<div class="item home">')

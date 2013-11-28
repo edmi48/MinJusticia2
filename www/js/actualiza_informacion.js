@@ -19,9 +19,6 @@ function actualiza_progressbar(por_ini,por_fin)
 
 function actualiza_set_datos()
 {
- var MyWindow;
-MyWindow = window.open('https://www.google.com.co/', '_blank', 'location=yes');
-MyWindow.close(); 
  var db;
  var continua = 1;
  var porc_ini = 0;

@@ -2,7 +2,6 @@
 {
  var db;
  db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
-alert(db);
  if (db) 
  {
             // Database opened

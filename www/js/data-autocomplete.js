@@ -1,7 +1,7 @@
 $(function(){
   var currencies = [];
   var db;
-     db = window.openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
+     db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
 
   	 db.transaction(function(tx) 
 				    {				

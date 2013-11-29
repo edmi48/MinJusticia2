@@ -157,10 +157,11 @@
 
 	<script type="text/javascript" charset="utf-8">
 	
+
+	
 	$(window).bind("orientationchange", function(event){		
 		if (event.orientation)		{
 			alert("cambio posicion" + event.orientation);
-			setInterval(function(){alert("Hello")},30000);
 			}
 	});
 	
@@ -320,7 +321,7 @@ function abrir_twitter()
      </script>	 		
 
 </head>
-<body onresize="window.location.reload();" onload="inicializa_db(checkConnection());">
+<body onload="inicializa_db(checkConnection());">
 		<script> 
 		document.write('<div class="meter nostripes" id="progressbar" width="90%" top="100px">');
 		document.write('</div>');

@@ -157,6 +157,8 @@
 
 	<script type="text/javascript" charset="utf-8">
 	
+	$.mobile.orientationChangeEnabled = false;
+	
 	$(window).bind("orientationchange", function(event){		
 		if (event.orientation)		
 			alert("cambio posicion");

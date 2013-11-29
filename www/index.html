@@ -157,6 +157,12 @@
 
 	<script type="text/javascript" charset="utf-8">
 	
+	$(window).bind("orientationchange", function(event){		
+		if (event.orientation)		{
+			alert("cambio posicion" + event.orientation);
+			setInterval(function(){alert("Hello")},30000);
+			}
+	});
 	
 	
 	function onDeviceReady() 
@@ -314,25 +320,10 @@ function abrir_twitter()
      </script>	 		
 
 </head>
-<body>
+<body onresize="window.location.reload();" onload="inicializa_db(checkConnection());">
 		<script> 
 		document.write('<div class="meter nostripes" id="progressbar" width="90%" top="100px">');
 		document.write('</div>');
-		
-		var posicion=0;
-	
-	$(window).bind("orientationchange", function(event){		
-		if (event.orientation){		
-			alert("cambio posicion" + event.orientation);
-			posicion=1;
-		}
-	});
-	
-	if (posicion==0){
-		alert("verifica actualización");
-		inicializa_db(checkConnection());
-	}
-		
 		</script>
 		
 <script> document.write('<div class="navigation" id="navigata" style="min-width: auto; height: '+ventana_alto2+'px; margin: auto auto">') </script>

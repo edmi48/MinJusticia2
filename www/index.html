@@ -157,11 +157,11 @@
 
 	<script type="text/javascript" charset="utf-8">
 	
-	alert("inicial: "+$(window).trigger("orientationchange"));
-	
 	$(window).bind("orientationchange", function(event){		
 		if (event.orientation)		
 			alert("cambio posicion" + event.orientation);
+		else
+			alert("no cambio");
 	});
 	
 	

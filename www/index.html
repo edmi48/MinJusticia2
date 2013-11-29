@@ -157,7 +157,7 @@
 
 	<script type="text/javascript" charset="utf-8">
 	
-	$(window).trigger("orientationchange");
+	alert("inicial: "+$(window).trigger("orientationchange"));
 	
 	$(window).bind("orientationchange", function(event){		
 		if (event.orientation)		

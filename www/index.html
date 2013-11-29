@@ -157,6 +157,11 @@
 
 	<script type="text/javascript" charset="utf-8">
 	
+	$(document).bind("mobileinit", function(){
+		alert("bloqueo giro");
+		$.mobile.orientationChangeEnabled = false;  
+		});
+	
 	$.mobile.orientationChangeEnabled = false;
 	
 	$(window).bind("orientationchange", function(event){		

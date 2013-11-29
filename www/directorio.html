@@ -17,6 +17,18 @@
 			.ui-tabs .ui-tabs-panel { padding: 10px }
 		</style>		
 <script>
+
+	function onDeviceReady() 
+			{
+			 document.addEventListener("backbutton", onBackKeyDown, false);
+			}	
+
+			function onBackKeyDown() {
+				navigator.app.backHistory();
+			}
+
+			document.addEventListener("deviceready", onDeviceReady, false);
+
    function abre_popup(programa,ubicacion,direccion,telefono,email)
    {
     if (programa == 1) var html = "<b><img src='images/cj.png'>Casa de Justicia</img></b><br>";
@@ -26,17 +38,6 @@
 	capa.innerHTML = html;
 	$( "#popupCloseRight" ).popup( "open", "data-position-to='window'" );
    }
-   
-   function onDeviceReady() 
-			{
-			 document.addEventListener("backbutton", onBackKeyDown, false);
-			}	
-
-			function onBackKeyDown() {
-				window.location = ("orientate.html"); 
-			}
-
-			document.addEventListener("deviceready", onDeviceReady, false);
 
 </script>
 		<script type="text/javascript" language="javascript" src="js/jquery.mobile-1.3.1.js"></script>

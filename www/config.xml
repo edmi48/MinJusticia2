@@ -100,7 +100,8 @@
     <access origin="https://twitter.com/" subdomains="true" /> 	
     <access origin="http://platform.twitter.com/" subdomains="true" /> 
     <access origin="https://platform.twitter.com/" subdomains="true" /> 
-    <access origin="https://twitter.com/twitterapi" subdomains="true" /> 
+    <access origin="https://platform.twitter.com/" subdomains="true" /> 
+    <access origin="https://mobile.twitter.com" subdomains="true" /> 
 
 	
     <!-- Incorporaión de Plugins -->

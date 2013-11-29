@@ -13,23 +13,18 @@
     //
     document.addEventListener("deviceready", onDeviceReady, false);
 
-	window.plugins.childBrowser.onLocationChange = function () {
-		alert('Cambio en la ruta');
-		//window.location="index.html";
-	};
-	
-	window.plugins.childBrowser.onClose =  = function () {
-		alert('Cerrar');
-		//window.location="index.html";
-	};
+	 
 
 	
     // Cordova is ready
     //
     function onDeviceReady() {
-		//window.plugins.childBrowser.openExternal('http://www.google.com');
-		//window.plugins.childBrowser.openExternal('http://www.google.com', usePhoneGap)
-		window.plugins.childBrowser.showWebPage('http://www.google.com/',{ showLocationBar: true });
+		window.plugins.childBrowser.openExternal('http://www.google.com');
+		
+		window.plugins.childBrowser.onClose = function () {
+		alert('childBrowser has closed');
+		window.location="index.html";
+	};
 		
     }
 

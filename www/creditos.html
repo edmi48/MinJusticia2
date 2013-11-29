@@ -31,11 +31,11 @@ var bg = jQuery("#bg");
 ratio = 1;
  
 if (screenWidth/screenHeight > ratio) {
-$(bg).height($(window).height()-85);
+$(bg).height($(window).height()-95);
 $(bg).width("100%");
 } else {
 $(bg).width("100%");
-$(bg).height($(window).height()-85);
+$(bg).height($(window).height()-95);
 }
  
 // Si a la imagen le sobra anchura, la centramos a mano
@@ -80,7 +80,7 @@ updateBackground();
 	document.write('</div>')
 	
 	var ventana_ancho=$(window).width()-35;
-	var ventana_alto=$(window).height()-85;
+	var ventana_alto=$(window).height()-95;
 	if ($(window).width() < $(window).height()) {
 		
 		document.write('<img src="images/creditos.png" alt="Fondo" id="bg" style="height: '+ventana_alto+'px; width: '+ventana_ancho+'; left: 0px;">') 

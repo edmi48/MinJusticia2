@@ -11,7 +11,7 @@ function actualiza_progressbar(por_ini,por_fin)
    .width(por_ini)
    .animate({
    width: por_fin
-   }, 3000);
+   }, 1000);
   });	
 
   
@@ -27,7 +27,7 @@ function actualiza_set_datos()
  actualiza_progressbar(porc_ini+'%',porc_fin+'%');
  porc_ini = porc_fin;
  porc_fin = porc_fin + 20;
- $.Zebra_Dialog('<strong>Inicia proceso de actualización de información, de click en aceptar y espere a que finalice...', {
+ $.Zebra_Dialog('<strong>Inicia proceso de actualización de información de click en aceptar y por favor espere un momento a que el proceso finalice...', {
     'type':     'information',
     'title':    'Actualización de Información',
     'buttons':  ['Aceptar'],
@@ -134,7 +134,6 @@ function actualiza_informacion(tabla, url)
 					 {						 
 					  actualiza_progressbar('70%','100%');
 					  $('div.navigation').unblock();
-					  window.location = ("index.html"); 
 	  				 }
 		
 			    });

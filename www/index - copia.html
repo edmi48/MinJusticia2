@@ -296,69 +296,11 @@ function abrir_twitter()
 		  }
 		 return conexion;
         }
-		
-		function reubicar(){
-			alert("Reubicando objetos");
-			if ($(window).width() < 490)
-			{
-				document.write('<div id="divCarousel" style="left: '+ventana_ancho2+'px; top:'+ventana_alto3+'px">')
-						document.write('<div id="divIzquierda"></div>')
-						document.write('<div id="divCentro">')
-							document.write('<ul>')
-								document.write('<li><a href="#" onclick=\'abrir_opcion("orientate.html",0);return false\'><img src="images/opcion1.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a></li>')
-								document.write('<li><a href="#" onclick=\'abrir_opcion("informate.html",1);return false\'><img src="images/opcion2.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a></li>')
-								document.write('<li><a href="#" onclick="abrir_twitter();"><img src="images/opcion3.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a></li>')
-								document.write('<li><a href="#" onclick=\'abrir_opcion("sugiereme.html",1);return false\'><img src="images/opcion4.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a></li>')
-								document.write('<li><a href="creditos.html" target="_self"><img src="images/opcion5.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a></li>')
-								document.write('<li><a href="#" onclick=\'ejecuta_actualizacion();return false\'><img src="images/opcion6.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a></li>')
-							document.write('</ul>')
-						document.write('</div>')
-						document.write('<div id="divDerecha"></div>')
-						document.write('<div class="clsSalto"></div>')
-					document.write('</div>')
- }
- else 
- {
-		if ($(window).width() < $(window).height()) {
-			icon_alto = ($(window).height())/7.8;				
-			icon_ancho = ($(window).height())/10;
-		}
-		else
-		{
-			icon_alto = ($(window).height())/5.5;				
-			icon_ancho = ($(window).height())/7;
-		}
-		document.write('<div class="item shop">')
-                document.write('<a href="#" onclick=\'abrir_opcion("orientate.html",0);return false\'><img src="images/opcion1.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
-		document.write('</div>')
-				
-                document.write('<div class="item youtube" >')
-                document.write('<a href="#" onclick=\'abrir_opcion("informate.html",1);return false\'><img src="images/opcion2.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
-                document.write('</div>')
-				
-                document.write('<div class="item fav">')
-                document.write('<a href="#" onclick="abrir_twitter();"><img src="images/opcion3.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
-                document.write('</div>')
-				
-                document.write('<div class="item home">')
-                document.write('<a href="#" onclick=\'abrir_opcion("sugiereme.html",1);return false\'><img src="images/opcion4.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
-                document.write('</div>')
-
-                document.write('<div class="item user" >')
-                document.write('<a href="creditos.html" target="_self"><img src="images/opcion5.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
-                document.write('</div>')
-				
-		document.write('<div class="item actual" >')
-                document.write('<a href="#" onclick=\'ejecuta_actualizacion();return false\'><img src="images/opcion6.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
-                document.write('</div>')
-				
-}
-		}
 
      </script>	 		
 
 </head>
-<body onresize="reubicar();" onload="inicializa_db(checkConnection());">
+<body onresize="window.location.reload();" onload="inicializa_db(checkConnection());">
 		<script> 
 		document.write('<div class="meter nostripes" id="progressbar" width="90%" top="100px">');
 		document.write('</div>');

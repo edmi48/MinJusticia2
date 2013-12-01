@@ -11,19 +11,6 @@
 			var sheet = document.createElement('style')
 			sheet.innerHTML = "#map_canvas { float:center; width: "+mapa_ancho+"px; height: "+mapa_alto+"px; }";
 			document.head.appendChild(sheet);
-			
-			function onDeviceReady() 
-			{
-			 document.addEventListener("backbutton", onBackKeyDown, false);
-			}	
-
-			function onBackKeyDown() {
-				navigator.app.backHistory();
-			}
-
-			document.addEventListener("deviceready", onDeviceReady, false);
-			
-			
 	  </script>
 	  
 

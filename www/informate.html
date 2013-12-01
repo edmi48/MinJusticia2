@@ -2,26 +2,54 @@
  <head>
       <title>Infórmate</title>
 
-      <meta http-equiv="Content-Type" name="viewport" content="width=device-width; initial-scale=1; charset=UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <script src="js/jquery-1.9.1.min.js"></script>
+
+      <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
+      <script src="js/libs/require.js" data-main="js/mobile"></script>
+	  
 	  <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 
-	<script>var array_youtube = new Array();</script>
 
-	  
+ <style>
+.redondeo{
+	border-radius:7px;
+	-moz-border-radius:7px; //Firefox
+	-webkit-border-radius:7px; //Safari y navegadores que usen WebKit	
+	box-shadow: 1px 1px 2px rgba(0,0,0,.5);
+	-webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.5);
+	-moz-box-shadow: 1px 1px 2px rgba(0,0,0,.5);
+	text-shadow: #fff 0px 1px 1px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#D7E9F3), to(#ffffff));
+	background: -moz-linear-gradient(top,  #D7E9F3,  #ffffff);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#D7E9F3', endColorstr='#ffffff');
+	width:370px;
+	height:220px;
+	margin-right: auto;
+	margin-left: auto;
+    text-align: center;	
+    text-top: center;	
+	display:table-cell;
+	vertical-align:middle;
+	}
+
+
+ </style>
+</head>
+<body onLoad="generar_video()">
+<div id="categories" data-role="page" data-title="Infórmate" style="background-image: url('images/fondo_2.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
+<div height=200px style="background-image: url('images/cabecera2.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
+<div> 
+<a href="index.html"> <img src="images/regresar.png" class="imagen-link" height="60px" width="60px" align="left" style="margin: 5px 8px"></a>
+</div>
+<br><br><br><br>
+</div>
+<div id="principal" data-theme="c" data-content-theme="d">		
+</div>		
+
  <script type='text/javascript'> 
-
-function onDeviceReady() 
-{
- document.addEventListener("backbutton", onBackKeyDown, false);
-}	
-
-function onBackKeyDown() {
-	window.location = ("index.html"); 
-}
-
-document.addEventListener("deviceready", onDeviceReady, false);
-  
+ var array_youtube = new Array();  
+ 
  function mostrarYoutube(search_input,id)
  {
   var nombre = 'result'+id;
@@ -60,48 +88,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
       } 
     }); 
   }; 
- 
 
-</script>
-
-      <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
-      <script src="js/libs/require.js" data-main="js/mobile"></script>
- <style>
-.redondeo{
-	border-radius:7px;
-	-moz-border-radius:7px; //Firefox
-	-webkit-border-radius:7px; //Safari y navegadores que usen WebKit	
-	box-shadow: 1px 1px 2px rgba(0,0,0,.5);
-	-webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.5);
-	-moz-box-shadow: 1px 1px 2px rgba(0,0,0,.5);
-	text-shadow: #fff 0px 1px 1px;
-	background: -webkit-gradient(linear, left top, left bottom, from(#D7E9F3), to(#ffffff));
-	background: -moz-linear-gradient(top,  #D7E9F3,  #ffffff);
-	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#D7E9F3', endColorstr='#ffffff');
-	width:370px;
-	height:220px;
-	margin-right: auto;
-	margin-left: auto;
-    text-align: center;	
-    text-top: center;	
-	display:table-cell;
-	vertical-align:middle;
-	}
-
-
- </style>
-</head>
-<body>
-<div id="categories" data-role="page" data-title="Infórmate" style="background-image: url('images/fondo_2.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
-<div height=200px style="background-image: url('images/cabecera2.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
-<div> 
-<a href="index.html"> <img src="images/regresar.png" class="imagen-link" height="60px" width="60px" align="left" style="margin: 5px 8px"></a>
-</div>
-<br><br><br><br>
-</div>
-<div id="principal" data-theme="c" data-content-theme="d">
-<script>
-
+function generar_video()
+{
  var db;
  db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
  db.transaction(function(tx) 
@@ -123,8 +112,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
                   }
                  });
 		        });
+}		
 </script>	
-		
-</div>		
+
+
 </body>
 </html>

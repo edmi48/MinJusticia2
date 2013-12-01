@@ -8,7 +8,6 @@
 		<script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
 		<script type="text/javascript" language="javascript" src="js/jquery-ui-tabs.js"></script>
 		<script type="text/javascript" src="js/offline.js"></script>
-		<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 
 		<style type="text/css" title="currentStyle">
 			@import "css/demo_page.css";
@@ -17,18 +16,6 @@
 			.ui-tabs .ui-tabs-panel { padding: 10px }
 		</style>		
 <script>
-
-	function onDeviceReady() 
-			{
-			 document.addEventListener("backbutton", onBackKeyDown, false);
-			}	
-
-			function onBackKeyDown() {
-				navigator.app.backHistory();
-			}
-
-			document.addEventListener("deviceready", onDeviceReady, false);
-
    function abre_popup(programa,ubicacion,direccion,telefono,email)
    {
     if (programa == 1) var html = "<b><img src='images/cj.png'>Casa de Justicia</img></b><br>";

@@ -3,10 +3,10 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.app_min_justicia"
+        id        = "com.phonegap.and_justice_for_all"
         version   = "1.0.0">
 
-    <name>Justicia para todos</name>
+    <name>... And Justice For All</name>
 
     <description>
         Aplicación desarrollada para el Ministerio de Justicia con el objetivo de promover los programas Casas de Justicia y Centros de Convivencia
@@ -106,7 +106,6 @@
 	
     <!-- Incorporaión de Plugins -->
 	<gap:plugin name="com.phonegap.plugins.emailcomposer" version="1.3" />
-	<gap:plugin name="com.phonegap.plugins.childbrowser" version="4.2.1" />
 	
 	
     <!--

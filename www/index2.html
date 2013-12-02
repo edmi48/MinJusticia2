@@ -262,17 +262,7 @@ else  $.Zebra_Dialog('<strong>No es posible ejecutar esta funcionalidad sin Cone
 
 function abrir_twitter()
 {
-	if (device.platform  == 'iOS') 
-	 {
-      window.open('https://mobile.twitter.com/MinjusticiaCo', '_blank', 'location=yes','closebuttoncaption=Regresar');
-	 }
-	 else 
-	 {
-      window.open('https://mobile.twitter.com/MinjusticiaCo', '_self', 'location=yes','closebuttoncaption=Regresar');
-//	  window.plugins.childBrowser.showWebPage('https://mobile.twitter.com/MinjusticiaCo',{ showLocationBar: true });
-	 }
-	 
-	 /*
+	
 	if (checkConnection() == 1) {
 
 	 if (device.platform  == 'iOS') 
@@ -288,7 +278,7 @@ function abrir_twitter()
 	else  $.Zebra_Dialog('<strong>No es posible ejecutar esta funcionalidad sin Conexión a Internet</strong>', {
 		'type':     'error',
 		'title':    'Sin Conexión a Internet'
-	});*/
+	});
 /*
  if (device.platform  == 'iOS') {
 	if (checkConnection() == 1) {

@@ -1,8 +1,8 @@
-<html class="no-js ui-mobile-rendering" lang="es">
+ï»¿<html class="no-js ui-mobile-rendering" lang="es">
 <head>
-      <title>Oriéntate</title>
+      <title>OriÃ©ntate</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
   <script type="text/javascript" src="js/jquery.autocomplete.min.js"></script>  
   <script type="text/javascript" src="js/data-autocomplete.js"></script>
@@ -13,10 +13,12 @@
 	  <link rel="stylesheet" type="text/css" media="all" href="css/autocomplete.css">
 	  		
         <style>
+		
             *{
                 margin:0;
                 padding:0;
             }
+			
         </style>
 
       <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
@@ -40,7 +42,9 @@
 </head>
 
 <body>
-<div id="categories" data-role="page" data-title="Oriéntate" style="background-image: url('images/fondo_2.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
+ <input type="text" id="auxiliar"> 
+
+<div id="categories" data-role="page" data-title="OriÃ©ntate" style="background-image: url('images/fondo_2.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
 <div height=200px style="background-image: url('images/cabecera1.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
 <div> 
 <a href="index.html" rel="external"> <img src="images/regresar.png" class="imagen-link" height="60px" width="60px" align="left" style="margin: 5px 8px"></a>
@@ -79,8 +83,15 @@
 	  
     </div><!-- @end #content -->
  <br>
- <p><a href="directorio.html" rel="external" data-direction="reverse" data-role="button" data-theme="b">Ver Directorio</a></p>
- <br><br>		
-	  
+ <p><a data-role="button" data-theme="b" OnClick="abrir_opcion()">Ver Directorio</a></p>
+ <br><br>
+
+<script>
+
+ function abrir_opcion()
+ {
+  window.location = ("directorio.html");
+ }
+</script>  
 </body>
 </html>

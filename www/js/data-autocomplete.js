@@ -1,19 +1,20 @@
-$(function(){
+ï»¿$(function(){
   var currencies = [];
   var db;
-     db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
-
-  	 db.transaction(function(tx) 
+Â Â Â Â Â db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
+	 document.getElementById('autocomplete').value = document.getElementById('auxiliar').value;
+     if (document.getElementById('auxiliar').value.length > 0) carga_html(db,document.getElementById('auxiliar'));
+Â Â 	 db.transaction(function(tx) 
 				    {				
-            	  	 tx.executeSql("SELECT distinct b.nombre_palabra_clave FROM palabra_clave b Order by 1", [],
-                  	 function(tx, result)
+Â Â Â Â Â Â Â Â Â Â Â Â 	  	 tx.executeSql("SELECT distinct b.nombre_palabra_clave FROM palabra_clave b Order by 1", [],
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â   	 function(tx, result)
 					 {
 					  //alert(result.rows.length);
 					  contador = result.rows.length - 1; 
-                   	  for(var i=0; i < result.rows.length; i++) 
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 	  for(var i=0; i < result.rows.length; i++) 
 					   currencies.push({value: result.rows.item(i)['nombre_palabra_clave']});
-                  	 });
-                 	});
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â   	 });
+Â Â Â Â Â Â Â Â          	});
   
 
   // setup autocomplete function pulling from currencies[] array
@@ -21,16 +22,26 @@ $(function(){
 						{
 			             lookup: currencies,
 						 onSelect: function (suggestion) 
-						 {					      						 
-  	 					  db.transaction(function(tx) 
+						 {		
+						  carga_html(db,suggestion);
+					     }
+						});												
+  
+
+});
+
+function carga_html(db,suggestion)
+{
+Â Â 	 					  db.transaction(function(tx) 
 									    {				
-            	  	 				     tx.executeSql("SELECT a.programa, count(*) as contador FROM informacion_programa a, palabra_clave b Where a.id_programa = b.id_programa and b.nombre_palabra_clave = '"+ suggestion.value +"' Group By a.programa", [],
-                  	 				     function(tx, result)
+Â Â Â Â Â Â Â Â Â Â Â Â 	  	 				     tx.executeSql("SELECT a.programa, count(*) as contador FROM informacion_programa a, palabra_clave b Where a.id_programa = b.id_programa and b.nombre_palabra_clave = '"+ suggestion.value +"' Group By a.programa", [],
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â   	 				     function(tx, result)
 									     {
 										  $('#outputcontent').html('');
+										  document.getElementById('auxiliar').value = suggestion.value; 
 										  document.getElementById('casa_justicia').style.display = 'none'; 
 										  document.getElementById('centro_convivencia').style.display = 'none'; 						   
-                   	  				      for(var i=0; i < result.rows.length; i++) 
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â 	  				      for(var i=0; i < result.rows.length; i++) 
 										  {
 										   if ((result.rows.length > 1) || (result.rows.item(i)['contador'] > 1))
 										   {
@@ -57,23 +68,18 @@ $(function(){
 //										    $('#outputcontent').html(thehtml);
 										   }
 										  }
-                  	 				     });
-                 					  });						  
-						  
-					     }
-						});												
-  
-
-});
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â   	 				     });
+Â Â Â Â Â Â Â Â          					  });
+}
 
 function carga_informacion(sql,objeto,info)
 {
-   var db;
-     db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
-  	 					  db.transaction(function(tx) 
+Â   var db;
+Â Â Â Â Â db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
+Â Â 	 					  db.transaction(function(tx) 
 									    {				
-           	  	 tx.executeSql(sql, [],
-                  	 function(tx, result2)
+Â Â Â Â Â Â Â Â Â Â Â 	  	 tx.executeSql(sql, [],
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â   	 function(tx, result2)
 					 {
 					   for(var j=0; j < result2.rows.length; j++) 
 					   {
@@ -88,15 +94,15 @@ function carga_informacion(sql,objeto,info)
 						{
 						  if (result2.rows.item(j)['programa'] == 'Casa de Justicia') icono = 'images/cj.png';
 						  else icono = 'images/ccc.png';
-					      //var thehtml = '<a href="#" onclick=\'abrir_opcion("mapa.html?Entidad='+suggestion.data+'");return false\'><img src="'+icono+'" height="42" width="42">&nbsp;&nbsp;' + suggestion.data + ' (Ver mapa)</a> <br> <strong>Entidad Encargada</strong> ' + suggestion.data2 + ' <br> <strong>Descripción Conflicto:</strong> ' + suggestion.data3;
+					      //var thehtml = '<a href="#" onclick=\'abrir_opcion("mapa.html?Entidad='+suggestion.data+'");return false\'><img src="'+icono+'" height="42" width="42">&nbsp;&nbsp;' + suggestion.data + ' (Ver mapa)</a> <br> <strong>Entidad Encargada</strong> ' + suggestion.data2 + ' <br> <strong>DescripciÃ³n Conflicto:</strong> ' + suggestion.data3;
 						  //html = '<a href="mapa.html?Entidad='+result2.rows.item(j)['programa']+'" target="_self"><img src="'+icono+'" height="42" width="42">&nbsp;&nbsp;' + result2.rows.item(j)['programa'] + ' (Ver mapa)</a> <br><strong>' + result2.rows.item(j)['entidad_encargada'] + '</strong> <br>' + result2.rows.item(j)['descripcion_tipo_informacion'];
 						  html = '<a href="#" onclick="mapa(\''+result2.rows.item(j)['programa']+'\')"><img src="'+icono+'" height="42" width="42">&nbsp;&nbsp;' + result2.rows.item(j)['programa'] + ' (Ver mapa)</a> <br><strong>' + result2.rows.item(j)['entidad_encargada'] + '</strong> <br>' + result2.rows.item(j)['descripcion_tipo_informacion'];
 						  
 						}
 					   }
 					   $(objeto).html(html);
-                  	 });	
-                  	 });	
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â   	 });	
+Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â   	 });	
 }
 
 function mapa(entidad)
@@ -105,9 +111,9 @@ function mapa(entidad)
 	db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
 	//alert(entidad);
     sentencia = "update parametro set valor_parametro = '"+entidad+"' where codigo_tparametro = 5";
-               db.transaction( function(tx) {
-                        tx.executeSql(sentencia, [],
-                                function(tx, result){
+Â  Â  Â  Â  Â  Â  Â  Â db.transaction( function(tx) {
+ Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â tx.executeSql(sentencia, [],
+ Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â function(tx, result){
 									if (device.platform  == 'iOS') {
 										window.location = ("mapa.html"); 
 									}
@@ -115,5 +121,5 @@ function mapa(entidad)
 									     setInterval(function(){window.location = ("mapa.html");},2000);
 									}
 										 });
-								   }); 
+								   });Â 
 }

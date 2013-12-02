@@ -35,6 +35,22 @@
 
 
  </style>
+ 
+ 	  <script>
+
+			function onDeviceReady() 
+			{
+			 document.addEventListener("backbutton", onBackKeyDown, false);
+			}	
+
+			function onBackKeyDown() {
+				window.location = ("index.html"); 
+			}
+
+			document.addEventListener("deviceready", onDeviceReady, false);
+
+</script>
+ 
 </head>
 <body onLoad="generar_video()">
 <div id="categories" data-role="page" data-title="Infórmate" style="background-image: url('images/fondo_2.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">

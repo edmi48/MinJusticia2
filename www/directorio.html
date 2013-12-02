@@ -1,13 +1,17 @@
 ﻿<html class="no-js ui-mobile-rendering" lang="es">
  <head>
       <title>Búsqueda de Casas de Justicia y Centros de Convivencia Ciudadana</title>
-      <meta http-equiv="Content-Type" name="viewport" content="width=device-width; initial-scale=1; charset=UTF-8">
-		
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+	  
 		<link rel="stylesheet" type="text/css" href="css/style_offline.css">
 		<script type="text/javascript" language="javascript" src="js/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
 		<script type="text/javascript" language="javascript" src="js/jquery-ui-tabs.js"></script>
 		<script type="text/javascript" src="js/offline.js"></script>
+		<script type="text/javascript" language="javascript" src="js/jquery.mobile-1.3.1.js"></script>
+		<link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
+		<script src="js/libs/require.js" data-main="js/mobile"></script>	    
+		<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 
 		<style type="text/css" title="currentStyle">
 			@import "css/demo_page.css";
@@ -15,21 +19,20 @@
 			@import "css/jquery-ui-1.8.4.custom.css";
 			.ui-tabs .ui-tabs-panel { padding: 10px }
 		</style>		
-<script>
-   function abre_popup(programa,ubicacion,direccion,telefono,email)
-   {
-    if (programa == 1) var html = "<b><img src='images/cj.png'>Casa de Justicia</img></b><br>";
-	else var html = "<b><img src='images/ccc.png'>Centro de Convivencia Ciudadana</img></b><br>";
-    html += "<b>"+ubicacion+"</b><br><b>Dirección</b><br>"+direccion+"<br><b>Teléfono(s)</b><br>"+telefono+"<br><b>E-mail(s)</b><br>"+email;
-	var capa = document.getElementById('contenido');
-	capa.innerHTML = html;
-	$( "#popupCloseRight" ).popup( "open", "data-position-to='window'" );
-   }
-
-</script>
-		<script type="text/javascript" language="javascript" src="js/jquery.mobile-1.3.1.js"></script>
 		
 <script>
+
+function onDeviceReady() 
+			{
+			 document.addEventListener("backbutton", onBackKeyDown, false);
+			}	
+
+			function onBackKeyDown() {
+				regresar();
+			}
+
+			document.addEventListener("deviceready", onDeviceReady, false);
+
  function construye_tabla(nombre_objeto,nombre_tabla,indicador)
  {
   var db;
@@ -63,12 +66,18 @@
 
         });  
  }
+
+   function abre_popup(programa,ubicacion,direccion,telefono,email)
+   {
+    if (programa == 1) var html = "<b><img src='images/cj.png'>Casa de Justicia</img></b><br>";
+	else var html = "<b><img src='images/ccc.png'>Centro de Convivencia Ciudadana</img></b><br>";
+    html += "<b>"+ubicacion+"</b><br><b>Dirección</b><br>"+direccion+"<br><b>Teléfono(s)</b><br>"+telefono+"<br><b>E-mail(s)</b><br>"+email;
+	var capa = document.getElementById('contenido');
+	capa.innerHTML = html;
+	$( "#popupCloseRight" ).popup( "open", "data-position-to='window'" );
+   }
+
  
-</script>		
-      <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
-      <script src="js/libs/require.js" data-main="js/mobile"></script>
-	  
-		<script type="text/javascript" charset="utf-8">
 			$(document).ready(function() {
 				$("#tabs").tabs( {
 					"show": function(event, ui) {
@@ -95,7 +104,7 @@
 <div id="categories" data-role="page" data-title="Búsqueda de Información" style="background-image: url('images/fondo_2.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
 <div height=200px style="background-image: url('images/cabecera7.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
 <div> 
-<a href="orientate.html" rel="external"> <img src="images/regresar.png" class="imagen-link" height="60px" width="60px" align="left" style="margin: 5px 8px"></a>
+<img src="images/regresar.png" class="imagen-link" height="60px" width="60px" align="left" style="margin: 5px 8px" OnClick="regresar()">
 </div>
 <br><br><br><br><br>
 </div>
@@ -142,5 +151,12 @@
 		
 	</div>
 
+<script>
+ function regresar()
+ {
+  window.history.back();
+ }
+</script>
+	
 	</body>
 </html>

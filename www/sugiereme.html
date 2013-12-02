@@ -17,6 +17,22 @@
                 padding:0;
             }
         </style>
+		
+			  <script>
+
+			function onDeviceReady() 
+			{
+			 document.addEventListener("backbutton", onBackKeyDown, false);
+			}	
+
+			function onBackKeyDown() {
+				window.location = ("index.html"); 
+			}
+
+			document.addEventListener("deviceready", onDeviceReady, false);
+
+</script>
+		
 </head>
 
 <body onload="leer_destinatario();">

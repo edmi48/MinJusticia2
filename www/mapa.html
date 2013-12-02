@@ -11,6 +11,18 @@
 			var sheet = document.createElement('style')
 			sheet.innerHTML = "#map_canvas { float:center; width: "+mapa_ancho+"px; height: "+mapa_alto+"px; }";
 			document.head.appendChild(sheet);
+			
+			function onDeviceReady() 
+			{
+			 document.addEventListener("backbutton", onBackKeyDown, false);
+			}	
+
+			function onBackKeyDown() {
+				regresar();
+			}
+
+			document.addEventListener("deviceready", onDeviceReady, false);
+			
 	  </script>
 	  
 
@@ -93,7 +105,7 @@ function onDeviceReady() {
 	//icon_destino="Centro de Convivencia Ciudadana";
 	 if (navigator.geolocation)
     {
-		navigator.geolocation.getCurrentPosition(onSuccess, onError, {maximumAge:3000,timeout:30000,enableHighAccuracy:true});
+		navigator.geolocation.getCurrentPosition(onSuccess, onError, {maximumAge:3000,timeout:15000,enableHighAccuracy:true});
     }
 	else
 	{
@@ -493,6 +505,11 @@ function mostrarInfo (r_direc, r_nombre,r_tel,r_correo) {
 	
 } 
 
+ function regresar()
+ {
+  window.history.back();
+ }
+
 		
 </script>
 
@@ -502,7 +519,7 @@ function mostrarInfo (r_direc, r_nombre,r_tel,r_correo) {
 <div id="categories" data-role="page" data-title="Mapa" style="background-image: url('images/fondo_2.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
 <div height=200px style="background-image: url('images/cabecera8.png'); background-repeat:no-repeat; background-size:100% 100%; background-position: absolute">
 <div> 
-<a href="orientate.html" target="_self"> <img src="images/regresar.png" class="imagen-link" height="60px" width="60px" align="left" style="margin: 5px 8px"></a>
+<img src="images/regresar.png" class="imagen-link" height="60px" width="60px" align="left" style="margin: 5px 8px" OnClick="regresar()">
 </div>
 <br><br><br><br>
 </div>

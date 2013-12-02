@@ -307,11 +307,30 @@ function abrir_twitter()
 		  }
 		 return conexion;
         }
+		
+		function reubicar(){
+			alert("Reubicando objetos");
+			if ($(window).width() < 490)
+			{
+					alert("left carrusel");
+					var ventana_ancho3= (($(window).width())-300)/2;
+					var carrusel = document.getElementById("divCarousel")
+					carrusel.style.left=ventana_ancho3;
+			}
+			else 
+			{
+				alert("left iconos");
+					//var ventana_ancho3= (($(window).width())-300)/2;
+					//var carrusel = document.getElementById("divCarousel")
+					//carrusel.style.left=ventana_ancho3;
+							
+			}
+		}
 
      </script>	 		
 
 </head>
-<body onresize="window.location.reload();" onload="inicializa_db(checkConnection());">
+<body onresize="reubicar();" onload="inicializa_db(checkConnection());">
 		<script> 
 		document.write('<div class="meter nostripes" id="progressbar" width="90%" top="100px">');
 		document.write('</div>');

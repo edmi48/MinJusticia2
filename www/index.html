@@ -200,6 +200,9 @@ document.addEventListener("deviceready", onDeviceReady, false);
 	   });
 	  });
 
+	  var vent_alto = $(window).height();
+	  var vent_ancho = $(window).width();
+	  
 	  var ventana_alto = $(window).height();
 	  var ventana_alto2 = $(window).height();
 	  var ventana_ancho2= $(window).width();
@@ -309,10 +312,11 @@ function abrir_twitter()
 		
 			var fondo_xy = document.getElementById("navigata");
 			fondo_xy.style.height=$(window).height();
-			//alert($(window).height());
+			//alert("alto: "+$(window).height());
+			//alert("ancho: "+$(window).width());
 			
 		
-			if ($(window).width() < 490)
+			if (vent_ancho < 490)
 			{
 				if ($(window).width() < $(window).height()) {
 					var ventana_alto4 = (($(window).height())/10)*5.5;
@@ -327,6 +331,8 @@ function abrir_twitter()
 			}
 			else 
 			{
+			//alert("alto: "+$(window).height());
+			//alert("ancho: "+$(window).width());
 					var opc1 = document.getElementById("opcion1");
 					var opc2 = document.getElementById("opcion2");
 					var opc3 = document.getElementById("opcion3");

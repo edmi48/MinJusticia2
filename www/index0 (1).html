@@ -262,6 +262,17 @@ else  $.Zebra_Dialog('<strong>No es posible ejecutar esta funcionalidad sin Cone
 
 function abrir_twitter()
 {
+	if (device.platform  == 'iOS') 
+	 {
+      window.open('https://mobile.twitter.com/MinjusticiaCo', '_blank', 'location=yes','closebuttoncaption=Regresar');
+	 }
+	 else 
+	 {
+      window.open('https://mobile.twitter.com/MinjusticiaCo', '_self', 'location=yes','closebuttoncaption=Regresar');
+//	  window.plugins.childBrowser.showWebPage('https://mobile.twitter.com/MinjusticiaCo',{ showLocationBar: true });
+	 }
+	 
+	 /*
 	if (checkConnection() == 1) {
 
 	 if (device.platform  == 'iOS') 
@@ -270,15 +281,14 @@ function abrir_twitter()
 	 }
 	 else 
 	 {
-      //window.open('https://mobile.twitter.com/MinjusticiaCo', '_self', 'location=yes','closebuttoncaption=Regresar');
-	  window.open('https://mobile.twitter.com/MinjusticiaCo', '_system', 'location=yes','closebuttoncaption=Regresar');
+      window.open('https://mobile.twitter.com/MinjusticiaCo', '_self', 'location=yes','closebuttoncaption=Regresar');
 //	  window.plugins.childBrowser.showWebPage('https://mobile.twitter.com/MinjusticiaCo',{ showLocationBar: true });
 	 } 
 	}
 	else  $.Zebra_Dialog('<strong>No es posible ejecutar esta funcionalidad sin Conexión a Internet</strong>', {
 		'type':     'error',
 		'title':    'Sin Conexión a Internet'
-	});
+	});*/
 /*
  if (device.platform  == 'iOS') {
 	if (checkConnection() == 1) {
@@ -306,23 +316,10 @@ function abrir_twitter()
         }
 		
 		function reubicar(){
-		
-			var fondo_xy = document.getElementById("navigata");
-			fondo_xy.style.height=$(window).height();
-			//alert($(window).height());
-			
-		
 			if ($(window).width() < 490)
 			{
-				if ($(window).width() < $(window).height()) {
-					var ventana_alto4 = (($(window).height())/10)*5.5;
-				}
-				else {
-					var ventana_alto4 = (($(window).height())/10)*5.2;
-				}
 					var ventana_ancho3= (($(window).width())-300)/2;
 					var carrusel = document.getElementById("divCarousel")
-					carrusel.style.top=ventana_alto4;
 					carrusel.style.left=ventana_ancho3;
 			}
 			else 
@@ -341,15 +338,7 @@ function abrir_twitter()
 					opc4.style.left=(ventana_ancho3/10*23);
 					opc5.style.left=(ventana_ancho3/10*29.5);
 					opc6.style.left=(ventana_ancho3/10*36);
-					
-					if ($(window).width() < $(window).height()) factor = 6.22;
-					else factor = 6;
-					opc1.style.top=($(window).height())/10*factor;
-					opc2.style.top=($(window).height())/10*factor;
-					opc3.style.top=($(window).height())/10*factor;
-					opc4.style.top=($(window).height())/10*factor;
-					opc5.style.top=($(window).height())/10*factor;
-					opc6.style.top=($(window).height())/10*factor;
+							
 			}
 		}
 

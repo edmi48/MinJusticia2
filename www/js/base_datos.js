@@ -299,7 +299,11 @@ tx.executeSql("Select count(*) as numero From palabra_clave", [],
                     for(var i=0; i < result.rows.length; i++) 
                      if ([result.rows.item(i)['numero']] == 0)
                      {					 
-					  if (conexion == 1) actualiza_set_datos();					
+					  if (conexion == 1) 
+					  {
+					   document.getElementById("actualiza").value="1";		
+					   actualiza_set_datos();					
+					  } 
 					  else
 					   $.Zebra_Dialog('<strong>No hay conexión a Internet para actualizar la información, por favor intente más tarde!</strong>', 
 					  {
@@ -307,6 +311,10 @@ tx.executeSql("Select count(*) as numero From palabra_clave", [],
 							'title':    'Actualización de Información'
 					  });
 					 }
+					 else
+					 {
+					  document.getElementById("actualiza").value="0";		
+                     }
                     });	
 
 

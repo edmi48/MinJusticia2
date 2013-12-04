@@ -34,7 +34,7 @@ function actualiza_set_datos()
     'onClose':  function(caption) {
 				$('div.navigation').block({ message: null });
 				db.transaction(function(tx) {
- 				 tx.executeSql("SELECT valor_parametro, convencion_parametro FROM parametro where codigo_tparametro = 4", [],
+ 				 tx.executeSql("SELECT valor_parametro, convencion_parametro FROM parametro where codigo_tparametro = 4 order by codigo_parametro", [],
                  function(tx, result)
 				 {				 
                   for(var i=0; i < result.rows.length; i++) 
@@ -134,6 +134,7 @@ function actualiza_informacion(tabla, url)
 					 {						 
 					  actualiza_progressbar('70%','100%');
 					  $('div.navigation').unblock();
+					  document.getElementById("actualiza").value="0";
 	  				 }
 		
 			    });

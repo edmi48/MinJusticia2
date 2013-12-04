@@ -41,7 +41,7 @@ function onDeviceReady()
   var container = document.getElementById(nombre_objeto)
   html += "<table border=1 id='"+nombre_tabla+"' align=center><thead><tr><th>Ubicación</th>";
   html += "<th>Más Información</th></tr></thead><tbody>";
-  db = openDatabase("ejemplo3.db3", "1.0", "Justicia para Todos", 500000);
+  db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
 
         db.transaction( function(tx) {
 			if (indicador == 1) sql = "SELECT departamento, municipio, nombre_lugar, direccion_lugar, barrio_lugar, telefono_lugar, email FROM ubicacion_programa Where tipo_programa = 'Casa de Justicia' order by departamento, municipio, direccion_lugar";

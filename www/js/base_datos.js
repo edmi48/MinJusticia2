@@ -313,7 +313,8 @@ tx.executeSql("Select count(*) as numero From palabra_clave", [],
 					 }
 					 else
 					 {
-					  document.getElementById("actualiza").value="0";		
+					  document.getElementById("actualiza").value="0";
+					  window.location.reload();					  
                      }
                     });	
 

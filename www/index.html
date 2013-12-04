@@ -308,29 +308,61 @@ function abrir_twitter()
 		 return conexion;
         }
 		
-		function reubicar(){				
-		alert("actualiza "+document.getElementById("actualiza").value);
-	if (document.getElementById("actualiza").value == "1")
-	{
-	 if ($(window).width() < $(window).height()) {
-		document.getElementById("bg").src="images/fondo.png";		
-	 }
-	 else {
-		document.getElementById("bg").src="images/fondo_ancho.png";
-	 }
-
-	 $(navigata).height("100%");
-	 $(bg).height("100%");
+		function reubicar(){
+		
+			var fondo_xy = document.getElementById("navigata");
+			fondo_xy.style.height=$(window).height();
+			//alert("alto: "+$(window).height());
+			//alert("ancho: "+$(window).width());
+			
+		
+			if (vent_ancho < 490)
+			{
+				if ($(window).width() < $(window).height()) {
+					var ventana_alto4 = (($(window).height())/10)*5.5;
+				}
+				else {
+					var ventana_alto4 = (($(window).height())/10)*5.2;
+				}
+					var ventana_ancho3= (($(window).width())-300)/2;
+					var carrusel = document.getElementById("divCarousel")
+					carrusel.style.top=ventana_alto4;
+					carrusel.style.left=ventana_ancho3;
+			}
+			else 
+			{
+			//alert("alto: "+$(window).height());
+			//alert("ancho: "+$(window).width());
+					var opc1 = document.getElementById("opcion1");
+					var opc2 = document.getElementById("opcion2");
+					var opc3 = document.getElementById("opcion3");
+					var opc4 = document.getElementById("opcion4");
+					var opc5 = document.getElementById("opcion5");
+					var opc6 = document.getElementById("opcion6");
+					
+					var ventana_ancho3 = ($(window).width()/4)-20;
+					opc1.style.left=(ventana_ancho3/10*3.5);
+					opc2.style.left=(ventana_ancho3/10*10);
+					opc3.style.left=(ventana_ancho3/10*16.5);
+					opc4.style.left=(ventana_ancho3/10*23);
+					opc5.style.left=(ventana_ancho3/10*29.5);
+					opc6.style.left=(ventana_ancho3/10*36);
+					
+					if ($(window).width() < $(window).height()) factor = 6.22;
+					else factor = 6;
+					opc1.style.top=($(window).height())/10*factor;
+					opc2.style.top=($(window).height())/10*factor;
+					opc3.style.top=($(window).height())/10*factor;
+					opc4.style.top=($(window).height())/10*factor;
+					opc5.style.top=($(window).height())/10*factor;
+					opc6.style.top=($(window).height())/10*factor;
+			}
 		}
-	else window.location.reload();
-	}
 
      </script>	 		
 
 </head>
-<!-- <body onresize="reubicar();" onload="inicializa_db(checkConnection());"> -->
- <body onresize="reubicar();" onload="inicializa_db(checkConnection());"> 
-<!--<body onresize="reubicar();" onload="alert('Entra')">  -->
+<body onresize="reubicar();" onload="inicializa_db(checkConnection());">
 		<script> 
 		document.write('<div class="meter nostripes" id="progressbar" width="90%" top="100px">');
 		document.write('</div>');
@@ -347,24 +379,22 @@ function abrir_twitter()
 </script>
 
 <script> 
-
-  var icon_alto;				
-  var icon_ancho;
-  ventana_alto3 = ventana_alto3;
-  if ($(window).width() < $(window).height()) 
-  {
+	
+	var icon_alto;				
+	var icon_ancho;
+	ventana_alto3 = ventana_alto3;
+	if ($(window).width() < $(window).height()) {
 		icon_alto = 80;				
 		icon_ancho = 65;
 		ventana_alto3 = (($(window).height())/10)*5.5;
-  }
-  else 
-  {
+	}
+	else {
 		icon_alto = 80;				
 		icon_ancho = 60;
 		ventana_alto3 = (($(window).height())/10)*5.2;
 	}
-  if ($(window).width() < 490)
-  {
+ if ($(window).width() < 490)
+ {
 	document.write('<div id="divCarousel" style="left: '+ventana_ancho2+'px; top:'+ventana_alto3+'px">')
 			document.write('<div id="divIzquierda"></div>')
 			document.write('<div id="divCentro">')
@@ -380,9 +410,9 @@ function abrir_twitter()
 			document.write('<div id="divDerecha"></div>')
 			document.write('<div class="clsSalto"></div>')
 		document.write('</div>')
-  }
-  else 
-  {
+ }
+ else 
+ {
 		if ($(window).width() < $(window).height()) {
 			icon_alto = ($(window).height())/7.8;				
 			icon_ancho = ($(window).height())/10;
@@ -412,17 +442,16 @@ function abrir_twitter()
                 document.write('<a href="creditos.html" target="_self"><img src="images/opcion5.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
                 document.write('</div>')
 				
-				document.write('<div class="item actual" id="opcion6">')
+		document.write('<div class="item actual" id="opcion6">')
                 document.write('<a href="#" onclick=\'ejecuta_actualizacion();return false\'><img src="images/opcion6.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
                 document.write('</div>')
 				
-  }			
-
+}			
 </script> 		
 
         <script type="text/javascript" src="js/actualiza_informacion.js"></script>
         <script type="text/javascript" src="js/base_datos.js"></script>
-	<input id="actualiza" type="text">	
+		
     </div>	
 </body>
 </html>

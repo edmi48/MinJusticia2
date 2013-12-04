@@ -1,6 +1,5 @@
 ﻿function inicializa_db(conexion) 
 {
- document.getElementById("actualiza").value="1";
  var db;
  db = openDatabase("justice_for_all.db3", "1.0", "Justicia para Todos", 500000);
  if (db) 

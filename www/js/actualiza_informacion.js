@@ -1,9 +1,7 @@
-	function actualiza_progressbar(por_ini,por_fin)
+function actualiza_progressbar(por_ini,por_fin)
 {		
  var capa = document.getElementById('progressbar');
- if (por_fin == '100%') mensaje = '';
- else mensaje = '';
- capa.innerHTML = '<span style="width: 0%; color:white;">'+mensaje+'</span>';
+ capa.innerHTML = '<span style="width: 0%; color:white;"></span>';
 		
  $(".meter > span").each(function() {
    $(this)
@@ -34,7 +32,7 @@ function actualiza_set_datos()
     'onClose':  function(caption) {
 				$('div.navigation').block({ message: null });
 				db.transaction(function(tx) {
- 				 tx.executeSql("SELECT valor_parametro, convencion_parametro FROM parametro where codigo_tparametro = 4 order by codigo_parametro", [],
+ 				 tx.executeSql("SELECT valor_parametro, convencion_parametro FROM parametro where codigo_tparametro = 4", [],
                  function(tx, result)
 				 {				 
                   for(var i=0; i < result.rows.length; i++) 
@@ -135,7 +133,10 @@ function actualiza_informacion(tabla, url)
 					  actualiza_progressbar('70%','100%');
 					  $('div.navigation').unblock();
 					  document.getElementById("actualiza").value="0";
-					  window.location.reload();
+					  if (device.platform  == 'iOS') tiempo = 15000;
+					  else tiempo = 5000;
+
+					  setTimeout(function(){window.location.reload();},tiempo);					  				  
 	  				 }
 		
 			    });

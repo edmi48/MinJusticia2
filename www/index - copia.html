@@ -303,15 +303,18 @@ function abrir_twitter()
 
 // Escuchar cambios de orientación
 window.addEventListener("orientationchange", function() {
-    //Determina la imagen a visualizar	 
+    // Hacer algo cuando cambia la orientación
+//Verifica si el Flag de actualización está activo
+	 if (document.getElementById("actualiza").value == "1")
+	 {
+//Determina la imagen a visualizar	 
 	  if ((window.orientation == 0) || (window.orientation == 180)) {
 		document.getElementById("bg").src="images/fondo.png";		
 	  }
 	  else {
 		document.getElementById("bg").src="images/fondo_ancho.png";
 	  }
-	  $(navigata).height("100%");
-	  $(bg).height("100%");
+	  
 //reorganizar iconos
 	  
 	  if ($(window).width() < 490)
@@ -376,22 +379,22 @@ window.addEventListener("orientationchange", function() {
 				icon_ancho = ($(window).height())/7;
 			}
 			document.write('<div class="item shop" id="opcion1">')
-			document.write('<a href="#" onclick=\'abrir_opcion("orientate.html",0);return false\'><img src="images/opcion1.png" id="imgopc1" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
+			document.write('<a href="#" onclick=\'abrir_opcion("orientate.html",0);return false\'><img src="images/opcion1.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
 			document.write('</div>')
 			document.write('<div class="item youtube" id="opcion2">')
-			document.write('<a href="#" onclick=\'abrir_opcion("informate.html",1);return false\'><img src="images/opcion2.png" id="imgopc2" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
+			document.write('<a href="#" onclick=\'abrir_opcion("informate.html",1);return false\'><img src="images/opcion2.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
 			document.write('</div>')
 			document.write('<div class="item fav" id="opcion3">')
-			document.write('<a href="#" onclick="abrir_twitter();"><img src="images/opcion3.png" id="imgopc3" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
+			document.write('<a href="#" onclick="abrir_twitter();"><img src="images/opcion3.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
 			document.write('</div>')
 			document.write('<div class="item home" id="opcion4">')
-			document.write('<a href="#" onclick=\'abrir_opcion("sugiereme.html",1);return false\'><img src="images/opcion4.png" id="imgopc4" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
+			document.write('<a href="#" onclick=\'abrir_opcion("sugiereme.html",1);return false\'><img src="images/opcion4.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
 			document.write('</div>')
 			document.write('<div class="item user" id="opcion5">')
-			document.write('<a href="creditos.html" target="_self"><img src="images/opcion5.png" id="imgopc5" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
+			document.write('<a href="creditos.html" target="_self"><img src="images/opcion5.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
 			document.write('</div>')
 			document.write('<div class="item actual" id="opcion6">')
-			document.write('<a href="#" onclick=\'ejecuta_actualizacion();return false\'><img src="images/opcion6.png" id="imgopc6" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
+			document.write('<a href="#" onclick=\'ejecuta_actualizacion();return false\'><img src="images/opcion6.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
 			document.write('</div>')
 		}
 		else
@@ -411,12 +414,7 @@ window.addEventListener("orientationchange", function() {
 			var opc4 = document.getElementById("opcion4");
 			var opc5 = document.getElementById("opcion5");
 			var opc6 = document.getElementById("opcion6");
-			var iopc1 = document.getElementById("imgopc1");
-			var iopc2 = document.getElementById("imgopc2");
-			var iopc3 = document.getElementById("imgopc3");
-			var iopc4 = document.getElementById("imgopc4");
-			var iopc5 = document.getElementById("imgopc5");
-			var iopc6 = document.getElementById("imgopc6");
+					
 			var ventana_ancho3 = ($(window).width()/4)-20;
 			opc1.style.left=(ventana_ancho3/10*3.5);
 			opc2.style.left=(ventana_ancho3/10*10);
@@ -424,18 +422,18 @@ window.addEventListener("orientationchange", function() {
 			opc4.style.left=(ventana_ancho3/10*23);
 			opc5.style.left=(ventana_ancho3/10*29.5);
 			opc6.style.left=(ventana_ancho3/10*36);
-			iopc1.style.height=icon_alto;
-			iopc2.style.height=icon_alto;
-			iopc3.style.height=icon_alto;
-			iopc4.style.height=icon_alto;
-			iopc5.style.height=icon_alto;
-			iopc6.style.height=icon_alto;
-			iopc1.style.width=icon_ancho;
-			iopc2.style.width=icon_ancho;
-			iopc3.style.width=icon_ancho;
-			iopc4.style.width=icon_ancho;
-			iopc5.style.width=icon_ancho;
-			iopc6.style.width=icon_ancho;
+			opc1.style.height=icon_alto;
+			opc2.style.height=icon_alto;
+			opc3.style.height=icon_alto;
+			opc4.style.height=icon_alto;
+			opc5.style.height=icon_alto;
+			opc6.style.height=icon_alto;
+			opc1.style.width=icon_ancho;
+			opc2.style.width=icon_ancho;
+			opc3.style.width=icon_ancho;
+			opc4.style.width=icon_ancho;
+			opc5.style.width=icon_ancho;
+			opc6.style.width=icon_ancho;
 			if ($(window).width() < $(window).height()) factor = 6.22;
 			else factor = 6;
 			opc1.style.top=($(window).height())/10*factor;
@@ -447,6 +445,21 @@ window.addEventListener("orientationchange", function() {
 			
 		}
 	}
+	  
+//Presenta tanto el DIV como la imagen al 100% mientras actualiza en el caso que se gire el dispositivo
+     /* if (device.platform  == 'iOS') 
+	  {
+	   $(navigata).height($(window).height()-20);
+	   $(bg).height($(window).height()-20);
+	  }
+	  else
+	  {
+	   $(navigata).height("100%");
+	   $(bg).height("100%");
+	  } 
+
+	 }
+	 else window.location.reload();*/
 }, false)
 
         function checkConnection() 

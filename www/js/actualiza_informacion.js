@@ -133,10 +133,10 @@ function actualiza_informacion(tabla, url)
 					  actualiza_progressbar('70%','100%');
 					  $('div.navigation').unblock();
 					  document.getElementById("actualiza").value="0";
-					  if (device.platform  == 'iOS') tiempo = 15000;
+/*					  if (device.platform  == 'iOS') tiempo = 15000;
 					  else tiempo = 5000;
 
-					  setTimeout(function(){window.location.reload();},tiempo);					  				  
+					  setTimeout(function(){window.location.reload();},tiempo);		*/			  				  
 	  				 }
 		
 			    });
